@@ -133,7 +133,43 @@
         elmAreaCategoryNews.html(xhtml);
     });
 
-   
+   // Giá vàng
+let elmAreaGold = $("#news-gold");
+function showGold() {
+    
+    $.getJSON( API_PREFIX + "get-gold", function( data ) {
+        let xhtml = '';
+        $.each( data, function( key, val ) {
+            console.log(val);
+            xhtml += `<div class="area-gold-item">
+                    <p>${val.type}</p>
+                    Mua: <span class="buy">${val.buy}.000đ</span>, Bán <span class="sell">${val.sell}.000đ</span>
+                </div>`;
+        }); 
+        elmAreaGold.html(xhtml);
+    });
+}
+
+// Giá coin
+let elmAreaCoin = $("#news-coin");
+function showCoin ()  {
+    $.getJSON( API_PREFIX + "get-coin", function( data ) {
+        let xhtml = '';
+        $.each( data, function( key, val ) {
+            val.price = val.price.toLocaleString(); 
+            val.percent_change_24h = val.percent_change_24h.toFixed(2); 
+            let classPrice = (val.percent_change_24h > 0) ? 'green' : 'red';
+            xhtml += `<div class="area-coin-item"> 
+                    <p>${val.name}</p>
+                    Price: <span class="price">${val.price}</span>, Percent 24h <span class="sell ${classPrice}">${val.percent_change_24h}%</span>
+                </div>`;
+        }); 
+        elmAreaCoin.html(xhtml);
+    });
+}  
+
+showGold();
+showCoin();
 
     $.urlParam = function (name) {
         
@@ -275,11 +311,8 @@
                     <img src="${val.thumb}" alt="">
                 </div>
                 <div class="post-content">
-                    <a onClick="funcViewArticle(${val.id}, ${val.title}, ${val.thumb}, ${val.link}) ;"href="${val.link}" class="post-title text-white">${val.title}</a>
-                    <div class="post-meta d-flex justify-content-between" >
-                    ${val.description}
-                   
-
+                <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
+                    <div class="post-meta d-flex justify-content-between" >${val.description}
                     </div>
                     <div class="post-meta d-flex justify-content-left" >
                     
@@ -338,7 +371,7 @@ let elmAreaHome_3News = $("#zvn-area-category-news-home_3");
 
 let elmAreasportNews = $("#zvn-area-category-sport-news1");
  
-$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&sort_dir=desc", function( data ) {
+$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=10&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         
@@ -370,7 +403,7 @@ $.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&
 
 let elmAreasportNewsHome = $("#zvn-area-category-sport-home");
  
-$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&sort_dir=desc", function( data ) {
+$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=10&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -400,43 +433,7 @@ $.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&
 elmAreasportNewsHome.html(xhtml);
 
 
-// Giá vàng
-let elmAreaGold = $("#news-gold");
-function showGold() {
-    
-    $.getJSON( API_PREFIX + "get-gold", function( data ) {
-        let xhtml = '';
-        $.each( data, function( key, val ) {
-            console.log(val);
-            xhtml += `<div class="area-gold-item">
-                    <p>${val.type}</p>
-                    Mua: <span class="buy">${val.buy}.000đ</span>, Bán <span class="sell">${val.sell}.000đ</span>
-                </div>`;
-        }); 
-        elmAreaGold.html(xhtml);
-    });
-}
 
-// Giá coin
-let elmAreaCoin = $("#news-coin");
-function showCoin ()  {
-    $.getJSON( API_PREFIX + "get-coin", function( data ) {
-        let xhtml = '';
-        $.each( data, function( key, val ) {
-            val.price = val.price.toLocaleString(); 
-            val.percent_change_24h = val.percent_change_24h.toFixed(2); 
-            let classPrice = (val.percent_change_24h > 0) ? 'green' : 'red';
-            xhtml += `<div class="area-coin-item"> 
-                    <p>${val.name}</p>
-                    Price: <span class="price">${val.price}</span>, Percent 24h <span class="sell ${classPrice}">${val.percent_change_24h}%</span>
-                </div>`;
-        }); 
-        elmAreaCoin.html(xhtml);
-    });
-}  
-
-showGold();
-showCoin();
 
 });
 

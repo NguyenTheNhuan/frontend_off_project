@@ -46,6 +46,7 @@ a:focus {
   text-decoration: none;
   outline: 0 solid transparent;
   color:#a6a6a6;
+  /* color: darkcyan; */
  
   font-weight: 500;
   font-size: 14px;
@@ -356,7 +357,8 @@ input:focus {
       .top-header-area .breaking-news-area .news-title p {
         margin-bottom: 0;
         font-weight: 500;
-        color: red;
+        /* color: red; */
+        color: darkcyan;
         text-transform: uppercase; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
           .top-header-area .breaking-news-area .news-title p {
@@ -473,7 +475,8 @@ input:focus {
         z-index: 99;
         border: none;
         cursor: pointer;
-        color: red;
+        /* color: red; */
+        color: darkcyan;
         padding: 0;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -501,7 +504,9 @@ input:focus {
     position: relative;
     width: 100%; }
     .header-area .vizew-main-menu .classy-nav-container {
-      background-color: #222627; }
+      /* background-color: #222627 */
+      background-color: darkcyan
+      ; }
     .header-area .vizew-main-menu .classy-navbar {
       padding: 0;
       height: 90px; }
@@ -1943,4 +1948,43 @@ textarea.form-control {
 
 .single-blog-post .post-content .post-meta a:last-child{
   margin-left: 30px;
+}
+
+div.area-gold-item p, div.area-coin-item p {
+  /* margin-bottom: 5px; */
+  margin-bottom: 10px;
+    /* color: #fff; */
+    color: yellowgreen;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+div.area-gold-item span.buy {
+  color: #F6E94D;
+  /* color: #55acee; */
+}
+
+div.area-gold-item span.sell {
+  /* color: #9CF78D; */
+  /* color: #13cb85; */
+  color: #55acee;
+}
+
+div.area-gold-item span.buy {
+  /* color: #F6E94D; */
+  color: #55acee;
+}
+
+div.area-coin-item span.price {
+  /* color: #F6E94D; */
+  color: #55acee
+}
+
+div.area-coin-item span.red {
+  /* color: #db4437; */
+  color: red;
+}
+
+div.area-coin-item span.green {
+  color: #3cb878;
 }
