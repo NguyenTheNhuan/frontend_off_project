@@ -121,6 +121,7 @@
         new WOW().init();
     }
 
+    // Đổ dữ liệu ra category news
     const API_PREFIX = 'http://apiforlearning.zendvn.com/api/';
     let elmAreaCategoryNews = $("ul#zvn-area-category-news");
     $.getJSON( API_PREFIX + "categories_news", function( data ) {
@@ -132,8 +133,10 @@
         elmAreaCategoryNews.html(xhtml);
     });
 
+   
+
     $.urlParam = function (name) {
-        console.log("name" + name)
+        
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (results == null) {
             return null;
@@ -144,11 +147,11 @@
         let idParam = $.urlParam('id');
         let elmAreaListNews = $("#zvn-area-list-news");
         if (idParam !== null) {
-            console.log(idParam)
+           
         $.getJSON( API_PREFIX + "categories_news/" + idParam + "/articles", function( data ) {
             let xhtml = '';
             $.each( data, function( key, val ) {
-                console.log(val)
+               
                 xhtml += ` <div class="single-post-area style-2">
                 <div class="row align-items-center">
                     <div class="col-12 col-md-6">
@@ -164,7 +167,7 @@
                         <!-- Post Content -->
                         <div class="post-content mt-0">
                             <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
-                            <a href="single-post.html" class="post-title mb-2">${val.title}</a>
+                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a> 
                             <div class="post-meta d-flex align-items-center mb-2">
                                 <a href="#" class="post-author">By Jane</a>
                                 <i class="fa fa-circle" aria-hidden="true"></i>
@@ -175,6 +178,8 @@
                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
                                 <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 7</a>
+                                <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -183,9 +188,257 @@
             });
            
             elmAreaListNews.append(xhtml);
+        });}
+
+        // tin mới nhất
+        let elmAreaLatestNews = $("#zvn-area-category-news-new");
+ 
+        $.getJSON( API_PREFIX + "articles", function( data ) {
+            let xhtml = '';
+            $.each( data, function( key, val ) {
+                
+                if  (key > 2) return false;
+                xhtml += ` <div class="col-12 col-md-4">
+                    <div class="single-post-area mb-80">
+                        <!-- Post Thumbnail -->
+                        <div class="post-thumbnail">
+                            <img src="${val.thumb}" alt="">
+
+                            <!-- Video Duration -->
+                            <span class="video-duration">05.03</span>
+                        </div>
+
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
+                            <a target="_blank" onClick="funcViewArticle(${val.id}, ${val.title}, ${val.thumb}, ${val.link}) ;"href="${val.link}" class="post-title text-white">${val.title}</a>
+                            <div class="post-meta d-flex" ${val.description}>
+                            
+                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
+                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
+                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
+                                <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>`;
+            });
+            elmAreaLatestNews.html(xhtml);
+        
         });
-    }
+
+        
+        let elmAreaHome_1News = $("#zvn-area-category-news-home_1");
+ 
+        $.getJSON( API_PREFIX + "categories_news/3/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+            let xhtml = '';
+            $.each( data, function( key, val ) {
+                
+                xhtml += `<div class="col-12 col-lg-12">
+                <div class="single-blog-post style-3 d-flex mb-50">
+                                <div class="post-thumbnail">
+                                    <img src="${val.thumb}" alt="">
+                                </div>
+                    <div class="post-content">
+                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}
+                        </a> 
+                        <div class="post-meta d-flex justify-content-between"> ${val.description}
+                        </div>
+                        <div class="post-meta d-flex justify-content-left" >
+                        <a href="#" class="mr-4"><i class="fa fa-comments-o " aria-hidden="true"></i> 16</a>
+                        <a href="#" class="mr-4"><i class="fa fa-eye " aria-hidden="true"></i> 26</a>
+                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
+                        <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            </div>`;
+        });
+        elmAreaHome_1News.html(xhtml);
     
+    });
+
+    let elmAreaHome_2News = $("#zvn-area-category-news-home_2");
+ 
+    $.getJSON( API_PREFIX + "categories_news/5/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+        let xhtml = '';
+        $.each( data, function( key, val ) {
+            
+            
+            xhtml += `<div class="col-12 col-lg-12">
+            <div class="single-blog-post style-3 d-flex mb-50">
+                <div class="post-thumbnail">
+                    <img src="${val.thumb}" alt="">
+                </div>
+                <div class="post-content">
+                    <a onClick="funcViewArticle(${val.id}, ${val.title}, ${val.thumb}, ${val.link}) ;"href="${val.link}" class="post-title text-white">${val.title}</a>
+                    <div class="post-meta d-flex justify-content-between" >
+                    ${val.description}
+                   
+
+                    </div>
+                    <div class="post-meta d-flex justify-content-left" >
+                    
+                    <a href="#" class="mr-4"><i class="fa fa-comments-o " aria-hidden="true"></i> 16</a>
+                        <a href="#" class="mr-4"><i class="fa fa-eye " aria-hidden="true"></i> 26</a>
+                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
+                        <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                </div>
+            </div>
+        </div>
+
+        </div>`;
+    });
+    elmAreaHome_2News.html(xhtml);
+
+});
+
+let elmAreaHome_3News = $("#zvn-area-category-news-home_3");
+ 
+    $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+        let xhtml = '';
+        $.each( data, function( key, val ) {
+            
+            
+            xhtml += `<div class="col-12 col-lg-12">
+            <div class="single-blog-post style-3 d-flex mb-50">
+                <div class="post-thumbnail">
+                    <img src="${val.thumb}" alt="">
+                </div>
+                <div class="post-content">
+                    <a target="_blank" onClick="funcViewArticle(${val.id}, ${val.title}, ${val.thumb}, ${val.link}) ;"href="${val.link}" class="post-title text-white">${val.title}</a>
+                    <div class="post-meta d-flex justify-content-between" > ${val.description}
+                        
+                    </div>
+                    <div class="post-meta d-flex justify-content-left" >
+                    
+                    <a href="#" class="mr-4"><i class="fa fa-comments-o " aria-hidden="true"></i> 16</a>
+                        <a href="#" class="mr-4"><i class="fa fa-eye " aria-hidden="true"></i> 26</a>
+                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
+                        <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                        
+                </div>
+            </div>
+        </div>
+
+        </div>`;
+    });
+    elmAreaHome_3News.html(xhtml);
+
+    let items = listItems()
+
+    showArticleViewed(items);
+
+    
+} )     
+
+let elmAreasportNews = $("#zvn-area-category-sport-news1");
+ 
+$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        
+        xhtml += `<li class="nav-item">
+        <a class="nav-link " id="post-${key}-tab" data-toggle="pill" href="#post-${key}" role="tab" aria-controls="post-${key}" aria-selected="true">
+            <!-- Single Blog Post -->
+            <div class="single-blog-post style-2 d-flex align-items-center">
+                <div class="post-thumbnail">
+                    <img src="${val.thumb}" alt="">
+                </div>
+                <div class="post-content">
+                    <h6 class="post-title">${val.title}</h6>
+                    <div class="post-meta d-flex justify-content-between">
+                        <span><i class="fa fa-comments-o" aria-hidden="true"></i> 25</span>
+                        <span><i class="fa fa-eye" aria-hidden="true"></i> 11</span>
+                        <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 19</span>
+                       
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    </li>`;
+});
+ elmAreasportNews.html(xhtml);
+
+});
+
+
+let elmAreasportNewsHome = $("#zvn-area-category-sport-home");
+ 
+$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        let active = (key===0) ? "show active" : "";
+        xhtml += `                        <div class="tab-pane fade ${active}" id="post-${key}" role="tabpanel" aria-labelledby="post-${key}-tab">
+        <!-- Single Feature Post -->
+        <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
+            <!-- Play Button -->
+            <a href="${val.link}" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+
+            <!-- Post Content -->
+            <div class="post-content" >
+                <a href="" class="post-cata">${val.category.name}</a>
+                <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a> 
+                <div class="post-meta d-flex">
+                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
+                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
+                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+                    
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+        `;
+});
+elmAreasportNewsHome.html(xhtml);
+
+
+// Giá vàng
+let elmAreaGold = $("#news-gold");
+function showGold() {
+    
+    $.getJSON( API_PREFIX + "get-gold", function( data ) {
+        let xhtml = '';
+        $.each( data, function( key, val ) {
+            console.log(val);
+            xhtml += `<div class="area-gold-item">
+                    <p>${val.type}</p>
+                    Mua: <span class="buy">${val.buy}.000đ</span>, Bán <span class="sell">${val.sell}.000đ</span>
+                </div>`;
+        }); 
+        elmAreaGold.html(xhtml);
+    });
+}
+
+// Giá coin
+let elmAreaCoin = $("#news-coin");
+function showCoin ()  {
+    $.getJSON( API_PREFIX + "get-coin", function( data ) {
+        let xhtml = '';
+        $.each( data, function( key, val ) {
+            val.price = val.price.toLocaleString(); 
+            val.percent_change_24h = val.percent_change_24h.toFixed(2); 
+            let classPrice = (val.percent_change_24h > 0) ? 'green' : 'red';
+            xhtml += `<div class="area-coin-item"> 
+                    <p>${val.name}</p>
+                    Price: <span class="price">${val.price}</span>, Percent 24h <span class="sell ${classPrice}">${val.percent_change_24h}%</span>
+                </div>`;
+        }); 
+        elmAreaCoin.html(xhtml);
+    });
+}  
+
+showGold();
+showCoin();
+
+});
 
 })(jQuery);
 
