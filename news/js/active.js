@@ -151,8 +151,8 @@ function showGold() {
 }
 
 // Giá coin
-let elmAreaCoin = $("#news-coin");
-function showCoin ()  {
+    let elmAreaCoin = $("#news-coin");
+    function showCoin ()  {
     $.getJSON( API_PREFIX + "get-coin", function( data ) {
         let xhtml = '';
         $.each( data, function( key, val ) {
@@ -228,8 +228,7 @@ showCoin();
 
         // tin mới nhất
         let elmAreaLatestNews = $("#zvn-area-category-news-new");
- 
-        $.getJSON( API_PREFIX + "articles", function( data ) {
+         $.getJSON( API_PREFIX + "articles", function( data ) {
             let xhtml = '';
             $.each( data, function( key, val ) {
                 
@@ -247,7 +246,7 @@ showCoin();
                         <!-- Post Content -->
                         <div class="post-content">
                             <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
-                            <a target="_blank" onClick="funcViewArticle(${val.id}, ${val.title}, ${val.thumb}, ${val.link}) ;"href="${val.link}" class="post-title text-white">${val.title}</a>
+                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
                             <div class="post-meta d-flex" ${val.description}>
                             
                                  <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
@@ -263,9 +262,9 @@ showCoin();
             });
             elmAreaLatestNews.html(xhtml);
         
-        });
+    });
 
-        
+        // trang tin tức Kinh doanh, giải trí, du lịch
         let elmAreaHome_1News = $("#zvn-area-category-news-home_1");
  
         $.getJSON( API_PREFIX + "categories_news/3/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
@@ -298,9 +297,9 @@ showCoin();
     
     });
 
-    let elmAreaHome_2News = $("#zvn-area-category-news-home_2");
+        let elmAreaHome_2News = $("#zvn-area-category-news-home_2");
  
-    $.getJSON( API_PREFIX + "categories_news/5/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+        $.getJSON( API_PREFIX + "categories_news/5/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
         let xhtml = '';
         $.each( data, function( key, val ) {
             
@@ -316,7 +315,7 @@ showCoin();
                     </div>
                     <div class="post-meta d-flex justify-content-left" >
                     
-                    <a href="#" class="mr-4"><i class="fa fa-comments-o " aria-hidden="true"></i> 16</a>
+                        <a href="#" class="mr-4"><i class="fa fa-comments-o " aria-hidden="true"></i> 16</a>
                         <a href="#" class="mr-4"><i class="fa fa-eye " aria-hidden="true"></i> 26</a>
                         <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
                         <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
@@ -328,11 +327,11 @@ showCoin();
     });
     elmAreaHome_2News.html(xhtml);
 
-});
+    });
 
-let elmAreaHome_3News = $("#zvn-area-category-news-home_3");
+        let elmAreaHome_3News = $("#zvn-area-category-news-home_3");
  
-    $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+        $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=3&sort_by=id&sort_dir=desc", function( data ) {
         let xhtml = '';
         $.each( data, function( key, val ) {
             
@@ -343,7 +342,7 @@ let elmAreaHome_3News = $("#zvn-area-category-news-home_3");
                     <img src="${val.thumb}" alt="">
                 </div>
                 <div class="post-content">
-                    <a target="_blank" onClick="funcViewArticle(${val.id}, ${val.title}, ${val.thumb}, ${val.link}) ;"href="${val.link}" class="post-title text-white">${val.title}</a>
+                <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
                     <div class="post-meta d-flex justify-content-between" > ${val.description}
                         
                     </div>
@@ -367,11 +366,12 @@ let elmAreaHome_3News = $("#zvn-area-category-news-home_3");
     showArticleViewed(items);
 
     
-} )     
+} );     
 
-let elmAreasportNews = $("#zvn-area-category-sport-news1");
- 
-$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=10&sort_by=id&sort_dir=desc", function( data ) {
+
+    // trang tin tức đầu bài
+    let elmAreasportNews = $("#zvn-area-category-sport-news1");
+    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=10&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         
@@ -400,10 +400,8 @@ $.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=10&sort_by=id
 
 });
 
-
-let elmAreasportNewsHome = $("#zvn-area-category-sport-home");
- 
-$.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=10&sort_by=id&sort_dir=desc", function( data ) {
+    let elmAreasportNewsHome = $("#zvn-area-category-sport-home");
+    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=10&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";

@@ -16,7 +16,7 @@
 body {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  background-color: black;
+  background-color: #222627;
   color: #a6a6a6; }
 
 h1,
@@ -45,8 +45,8 @@ a:focus {
   transition-duration: 500ms;
   text-decoration: none;
   outline: 0 solid transparent;
-  color:#a6a6a6;
-  /* color: darkcyan; */
+  /* color:#a6a6a6; */
+  color: darkcyan;
  
   font-weight: 500;
   font-size: 14px;
