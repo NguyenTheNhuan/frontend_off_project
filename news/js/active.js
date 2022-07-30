@@ -355,7 +355,7 @@ $.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&
                         <span><i class="fa fa-comments-o" aria-hidden="true"></i> 25</span>
                         <span><i class="fa fa-eye" aria-hidden="true"></i> 11</span>
                         <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 19</span>
-                       
+                        <span><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</span>
                     </div>
                 </div>
             </div>
@@ -388,7 +388,7 @@ $.getJSON( API_PREFIX + "categories_news/6/articles?offset=0&limit=5&sort_by=id&
                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
                     <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
-                    
+                    <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
                 </div>
             </div>
 
