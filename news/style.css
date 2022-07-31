@@ -386,7 +386,7 @@ input:focus {
           font-weight: 400; }
           .top-header-area .breaking-news-area .ticker ul li a {
             display: block;
-            /* color: #a6a6a6 */
+            /* color: #a6a6a6; */
             color: darkcyan;
             ; }
             @media only screen and (min-width: 992px) and (max-width: 1199px) {
