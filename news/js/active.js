@@ -405,7 +405,7 @@ showCoin();
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
-        xhtml += `                        <div class="tab-pane fade ${active}" id="post-${key}" role="tabpanel" aria-labelledby="post-${key}-tab">
+        xhtml += `<div class="tab-pane fade ${active}" id="post-${key}" role="tabpanel" aria-labelledby="post-${key}-tab">
         <!-- Single Feature Post -->
         <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
             <!-- Play Button -->
@@ -430,10 +430,110 @@ showCoin();
 });
 elmAreasportNewsHome.html(xhtml);
 
+});  
 
 
+// trang tin tức ở giưa
+
+let elmAreaNewsHome_2 = $("#zvn-news-home_2");
+$.getJSON( API_PREFIX + "categories_news/2/articles?offset=3&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        let active = (key===0) ? "show active" : "";
+        xhtml += `<div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
+                                <!-- Play Button -->
+                                <a href="${val.link}" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="#" class="post-cata">${val.category.name}</a>
+                                    <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+                                    <div class="post-meta d-flex">
+                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
+                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
+                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+                                        <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                                    </div>
+                                </div>
+
+        </div>
+    </div>
+                `;
+});
+
+    elmAreaNewsHome_2.html(xhtml);
+
+});
+let elmAreaNewsHome_2a = $("#zvn-news-home_2a");
+$.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        let active = (key===0) ? "show active" : "";
+        xhtml += `<div class="single-post-area mb-80">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="${val.thumb}" alt="">
+
+                                        <!-- Video Duration -->
+                                        <!-- <span class="video-duration">05.03</span> -->
+                                    </div>
+
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
+                                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+                                        <div class="post-meta d-flex" >
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
+                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
+                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
+                                            <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+
+});
+
+
+elmAreaNewsHome_2a.html(xhtml);
+
+});
+
+let elmAreaNewsHome_2b = $("#zvn-news-home_2b");
+$.getJSON( API_PREFIX + "categories_news/10/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        let active = (key===0) ? "show active" : "";
+        xhtml += `<div class="single-post-area mb-80">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="${val.thumb}" alt="">
+
+                                        <!-- Video Duration -->
+                                        <!-- <span class="video-duration">05.03</span> -->
+                                    </div>
+
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
+                                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+                                        <div class="post-meta d-flex" >
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
+                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
+                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
+                                            <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+
+});
+
+
+elmAreaNewsHome_2b.html(xhtml);
 
 });
 
 })(jQuery);
-

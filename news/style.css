@@ -358,7 +358,8 @@ input:focus {
         margin-bottom: 0;
         font-weight: 500;
         /* color: red; */
-        color: darkcyan;
+        /* color: darkcyan; */
+        color: #db4437;
         text-transform: uppercase; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
           .top-header-area .breaking-news-area .news-title p {
@@ -385,7 +386,9 @@ input:focus {
           font-weight: 400; }
           .top-header-area .breaking-news-area .ticker ul li a {
             display: block;
-            color: #a6a6a6; }
+            /* color: #a6a6a6 */
+            color: darkcyan;
+            ; }
             @media only screen and (min-width: 992px) and (max-width: 1199px) {
               .top-header-area .breaking-news-area .ticker ul li a {
                 font-size: 12px; } }
@@ -476,7 +479,8 @@ input:focus {
         border: none;
         cursor: pointer;
         /* color: red; */
-        color: darkcyan;
+        /* color: darkcyan; */
+        color: #db4437;
         padding: 0;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -505,7 +509,8 @@ input:focus {
     width: 100%; }
     .header-area .vizew-main-menu .classy-nav-container {
       /* background-color: #222627 */
-      background-color: darkcyan
+      /* background-color: darkcyan */
+      background-color: #db4437;
       ; }
     .header-area .vizew-main-menu .classy-navbar {
       padding: 0;
@@ -981,7 +986,8 @@ input:focus {
     margin-top: 20px; }
     .single-post-area .post-content .post-title {
       display: block;
-      color: #222627;
+      /* color: #222627; */
+      color: #fff;
       margin-bottom: 15px;
       font-size: 20px; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
