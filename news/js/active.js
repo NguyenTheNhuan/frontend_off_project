@@ -435,8 +435,8 @@ elmAreasportNewsHome.html(xhtml);
 
 // trang tin tức ở giưa
 
-let elmAreaNewsHome_2 = $("#zvn-news-home_2");
-$.getJSON( API_PREFIX + "categories_news/2/articles?offset=3&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+    let elmAreaNewsHome_2 = $("#zvn-news-home_2");
+    $.getJSON( API_PREFIX + "categories_news/2/articles?offset=3&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -464,8 +464,10 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=3&limit=1&sort_by=id&
     elmAreaNewsHome_2.html(xhtml);
 
 });
-let elmAreaNewsHome_2a = $("#zvn-news-home_2a");
-$.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+
+// trang tin tức ở giữa 2
+    let elmAreaNewsHome_2a = $("#zvn-news-home_2a");
+    $.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -500,8 +502,8 @@ elmAreaNewsHome_2a.html(xhtml);
 
 });
 
-let elmAreaNewsHome_2b = $("#zvn-news-home_2b");
-$.getJSON( API_PREFIX + "categories_news/10/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+    let elmAreaNewsHome_2b = $("#zvn-news-home_2b");
+    $.getJSON( API_PREFIX + "categories_news/10/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
