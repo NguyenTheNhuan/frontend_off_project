@@ -228,7 +228,7 @@ showCoin();
 
         // tin mới nhất
         let elmAreaLatestNews = $("#zvn-area-category-news-new");
-         $.getJSON( API_PREFIX + "articles", function( data ) {
+         $.getJSON( API_PREFIX + "articles?offset=6&limit=3&sort_by=id&sort_dir=desc", function( data ) {
             let xhtml = '';
             $.each( data, function( key, val ) {
                 
