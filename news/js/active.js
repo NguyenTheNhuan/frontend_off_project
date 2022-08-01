@@ -371,7 +371,7 @@ showCoin();
 
     // trang tin tức đầu bài
     let elmAreasportNews = $("#zvn-area-category-sport-news1");
-    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=11&limit=10&sort_by=id&sort_dir=desc", function( data ) {
+    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=11&limit=20&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         
@@ -401,7 +401,7 @@ showCoin();
 });
 
     let elmAreasportNewsHome = $("#zvn-area-category-sport-home");
-    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=11&limit=10&sort_by=id&sort_dir=desc", function( data ) {
+    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=11&limit=20&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
