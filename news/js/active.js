@@ -232,7 +232,7 @@ showCoin();
             let xhtml = '';
             $.each( data, function( key, val ) {
                 
-                if  (key > 2) return false;
+                if  (key > 5) return false;
                 xhtml += ` <div class="col-12 col-md-4">
                     <div class="single-post-area mb-80">
                         <!-- Post Thumbnail -->
