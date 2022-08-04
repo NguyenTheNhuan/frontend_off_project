@@ -122,6 +122,7 @@
     }
 
     // Đổ dữ liệu ra category news
+    // const API_PREFIX = 'http://apiforlearning.zendvn.com/api/';
     const API_PREFIX = 'http://apiforlearning.zendvn.com/api/';
     let elmAreaCategoryNews = $("ul#zvn-area-category-news");
     $.getJSON( API_PREFIX + "categories_news", function( data ) {
@@ -409,7 +410,7 @@ showCoin();
         <!-- Single Feature Post -->
         <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
             <!-- Play Button -->
-            <a href="${val.link}" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+            <a href="${val.link}" class=""><i class="" aria-hidden="true"></i></a>
 
             <!-- Post Content -->
             <div class="post-content" >
@@ -453,11 +454,13 @@ elmAreasportNewsHome.html(xhtml);
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
                                         <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
                                         <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                                        <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                                        </div>
                                     </div>
+                        
+                                    
                                 </div>
-
-        </div>
-    </div>
+                            </div>
                 `;
 });
 
@@ -467,7 +470,7 @@ elmAreasportNewsHome.html(xhtml);
 
 // trang tin tức ở giữa 2
     let elmAreaNewsHome_2a = $("#zvn-news-home_2a");
-    $.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+    $.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -489,10 +492,13 @@ elmAreasportNewsHome.html(xhtml);
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
                                             <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
                                             <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
                             `;
 
 });
@@ -503,7 +509,7 @@ elmAreaNewsHome_2a.html(xhtml);
 });
 
     let elmAreaNewsHome_2b = $("#zvn-news-home_2b");
-    $.getJSON( API_PREFIX + "categories_news/10/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+    $.getJSON( API_PREFIX + "categories_news/10/articles?offset=1&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -525,10 +531,13 @@ elmAreaNewsHome_2a.html(xhtml);
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
                                             <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
                                             <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                          
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
                             `;
 
 });
@@ -537,5 +546,43 @@ elmAreaNewsHome_2a.html(xhtml);
 elmAreaNewsHome_2b.html(xhtml);
 
 });
+
+// video tin tức home
+// let elmAreaNewsVideo = $("#zvn-video-home");
+// $.getJSON( API_PREFIX + "playlists/10/videos?offset=3&limit=3&sort_by=id&sort_dir=asc", function( data ) {
+//     let xhtml = '';
+//     $.each( data, function( key, val ) {
+//         let active = (key===0) ? "show active" : "";
+//         xhtml += `<div class="single-feature-post video-post bg-img" 
+//         style="background-image: url(${val.thumb});">
+//                                 <!-- Play Button -->
+//                                 <a href="${val.thumb}" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+
+//                                 <!-- Post Content -->
+//                                 <div class="post-content">
+//                                     <a href="#" class="post-cata">${val.category.name}</a>
+//                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+//                                     <div class="post-meta d-flex">
+//                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
+//                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
+//                                         <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+//                                         <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+//                                     </div>
+//                                 </div>
+
+//                                 <!-- Video Duration -->
+//                                 <span class="video-duration">05.03</span>
+//                             </div>
+//                             </div>
+//                                 </div>
+//                             </div>
+//                             `;
+
+// });
+
+
+// elmAreaNewsVideo.html(xhtml);
+
+// });
 
 })(jQuery);
