@@ -13,8 +13,7 @@ showArticleViewed = (data) => {
         <div class="post-thumbnail">
             <img src="${val.thumb}" alt="">
 
-            <!-- Video Duration -->
-            <span class="video-duration">05.03</span>
+           
         </div>
 
         <!-- Post Content -->
@@ -22,11 +21,8 @@ showArticleViewed = (data) => {
         <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">Xoá</a>
             <a href="single-post.html" class="post-title text-white">'${val.title}'</a>
             <div class="post-meta d-flex">
-                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
-            </div>
+               
+                
         </div>
     </div>`; 
     });

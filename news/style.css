@@ -26,11 +26,11 @@ h4,
 h5,
 h6 {
   font-family: "Roboto", sans-serif;
-  color: #fff;
+  color: #ffffff;
   line-height: 1.3;
   font-weight: 500; }
 
- {
+p {
   font-family: "Roboto", sans-serif;
   color: #a6a6a6;
   font-size: 14px;
@@ -45,9 +45,8 @@ a:focus {
   transition-duration: 500ms;
   text-decoration: none;
   outline: 0 solid transparent;
-  /* color:#a6a6a6; */
+  /* color: #a6a6a6; */
   color: darkcyan;
- 
   font-weight: 500;
   font-size: 14px;
   font-family: "Roboto", sans-serif; }
@@ -357,8 +356,6 @@ input:focus {
       .top-header-area .breaking-news-area .news-title p {
         margin-bottom: 0;
         font-weight: 500;
-        /* color: red; */
-        /* color: darkcyan; */
         color: #db4437;
         text-transform: uppercase; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -386,9 +383,9 @@ input:focus {
           font-weight: 400; }
           .top-header-area .breaking-news-area .ticker ul li a {
             display: block;
-            /* color: #a6a6a6; */
-            color: darkcyan;
-            ; }
+            /* color: #a6a6a6;  */
+            color: #fff;
+          }
             @media only screen and (min-width: 992px) and (max-width: 1199px) {
               .top-header-area .breaking-news-area .ticker ul li a {
                 font-size: 12px; } }
@@ -478,9 +475,8 @@ input:focus {
         z-index: 99;
         border: none;
         cursor: pointer;
-        /* color: red; */
-        /* color: darkcyan; */
-        color: #db4437;
+        /* color: #ffffff; */
+        color: #dd4b39;
         padding: 0;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -508,10 +504,9 @@ input:focus {
     position: relative;
     width: 100%; }
     .header-area .vizew-main-menu .classy-nav-container {
-      /* background-color: #222627 */
+      /* background-color: #db4437;  */
       background-color: darkcyan;
-      /* background-color: #db4437; */
-      ; }
+    }
     .header-area .vizew-main-menu .classy-navbar {
       padding: 0;
       height: 90px; }
@@ -667,7 +662,8 @@ input:focus {
         .vizew-breadcrumb .breadcrumb .breadcrumb-item {
           font-size: 12px; } }
       .vizew-breadcrumb .breadcrumb .breadcrumb-item a {
-        /* color: #222627; */
+        /* color: #fff; */
+        color: darkcyan;
         font-size: 16px;
         font-weight: 400; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -729,7 +725,7 @@ input:focus {
     z-index: 1;
     padding-left: 20px; }
     .single-blog-post .post-content .post-title {
-      color: #222627;
+      color: #ffffff;
       margin-bottom: 5px;
       display: block;
       font-size: 16px;
@@ -747,7 +743,7 @@ input:focus {
         color: #db4437; }
     .single-blog-post .post-content .post-meta a {
       display: inline-block;
-      /* color: #595959; */
+      color: #595959;
       font-size: 12px; }
       .single-blog-post .post-content .post-meta a:hover, .single-blog-post .post-content .post-meta a:hover {
         color: #ffffff; }
@@ -819,7 +815,7 @@ input:focus {
           max-width: 100px;
           width: 100px; } }
     .single-blog-post.style-3 .post-content .post-title {
-      color: #222627;
+      color: #ffffff;
       margin-bottom: 15px;
       display: block;
       font-weight: 700;
@@ -944,7 +940,9 @@ input:focus {
   .post-cata.cata-success {
     background-color: #3cb878; }
   .post-cata.cata-danger {
-    background-color: #db4437; }
+    /* background-color: #db4437;  */
+    background-color: #a1a11f;
+  }
   .post-cata.cata-primary {
     background-color: #1996ce; }
   .post-cata:hover, .post-cata:focus {
@@ -986,8 +984,7 @@ input:focus {
     margin-top: 20px; }
     .single-post-area .post-content .post-title {
       display: block;
-      /* color: #222627; */
-      color: #fff;
+      color: #ffffff;
       margin-bottom: 15px;
       font-size: 20px; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1534,7 +1531,10 @@ input:focus {
   z-index: 1;
   border: 1px solid #393c3d;
   border-radius: 3px;
-  padding: 40px 30px; }
+  /* padding: 40px 30px;  */
+
+  padding: 10px 20px;
+}
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .single-widget {
       padding: 30px 20px; } }
@@ -1645,7 +1645,7 @@ input:focus {
     .single-youtube-channel .youtube-channel-content .channel-title {
       text-transform: uppercase;
       font-size: 14px;
-      color: #222627;
+      color: #ffffff;
       margin-bottom: 8px;
       display: block; }
       @media only screen and (max-width: 767px) {
@@ -1749,7 +1749,7 @@ input:focus {
   position: relative;
   z-index: 1;
   background-color: #191c1d;
-  padding-top: 50px; }
+  padding-top: 30px; }
   .footer-area .footer-widget {
     position: relative;
     z-index: 1; }
@@ -1945,49 +1945,42 @@ textarea.form-control {
   height: 140px; }
 
 /*# sourceMappingURL=style.css.map */
-/* div.gold-item p {
-  margin-bottom: 5px;
-    color: black;
-    font-size: 16px;
-    font-weight: 500;
-} */
-
-.single-blog-post .post-content .post-meta a:last-child{
-  margin-left: 30px;
+div.area-gold-item, div.area-coin-item {
+  margin-bottom: 20px;
 }
 
+
+
 div.area-gold-item p, div.area-coin-item p {
-  /* margin-bottom: 5px; */
-  margin-bottom: 10px;
+  margin-bottom: 5px;
     /* color: #fff; */
-    color: yellowgreen;
+    color:yellowgreen;
     font-size: 16px;
     font-weight: bold;
 }
 
 div.area-gold-item span.buy {
   color: #F6E94D;
-  /* color: #55acee; */
 }
 
 div.area-gold-item span.sell {
   /* color: #9CF78D; */
-  /* color: #13cb85; */
-  color: #55acee;
+  color:#55acee
 }
 
 div.area-gold-item span.buy {
   /* color: #F6E94D; */
-  color: #55acee;
+  color:#55acee
 }
 
 div.area-coin-item span.price {
   /* color: #F6E94D; */
-  color: #55acee
+color:#55acee
 }
 
 div.area-coin-item span.red {
   /* color: #db4437; */
+
   color: red;
 }
 
