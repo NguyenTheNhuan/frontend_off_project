@@ -30,7 +30,7 @@ showArticleViewed = (data) => {
     elmAreaArticleViewed.html(xhtml);
 }
 
-
+// ko cần
 funcDeleteArticleViewed= (id) => {
     let text = "DELETE!\nBạn chắc chắn muốn xoá bài viết này";
     if (confirm(text) == true) {
@@ -57,14 +57,14 @@ funcSubmitForm = () => {
 
    
 }
-
+// cop
 funcViewArticle = (id, title, thumb, link ) => {
     let items       = [];
     console.log(link)
     items = addItem(id, title, thumb, link);
     showArticleViewed(items);
 }
-
+// cop
 funcDeleteArticleViewed= (id) => {
     let text = "DELETE!\nBạn chắc chắn muốn xoá bài viết này";
     if (confirm(text) == true) {

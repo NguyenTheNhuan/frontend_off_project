@@ -601,7 +601,9 @@ elmAreaNewsHome_2b.html(xhtml);
 
 
 // tin tưc cuoi Trang
-let elmAreaNewsHome_Last = $("#news-home-Last");
+
+// cuối trang 1-thoi sự
+let elmAreaNewsHome_Last = $("#news-home-news-Last");
 $.getJSON( API_PREFIX + "categories_news/2/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
@@ -639,8 +641,8 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=0&limit=1&sort_by=id&
 });
 
 
-let elmAreaNewsHome_Last_1 = $("#news-home-Last-1");  
-$.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=2&sort_by=id&sort_dir=desc", function( data ) {
+let elmAreaNewsHome_Last_1 = $("#news-home-new-Last-1");  
+$.getJSON( API_PREFIX + "categories_news/2/articles?offset=2&limit=2&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -682,8 +684,47 @@ $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=2&sort_by=id
 });
 
 
-let elmAreaNewsHome_Last_2 = $("#news-home-Last-2");  
-$.getJSON( API_PREFIX + "categories_news/10/articles?offset=0&limit=2&sort_by=id&sort_dir=desc", function( data ) {
+ // cuối trang  thoi sư
+
+ let elmAreaNewsHome_Last_one = $("#news-home-Travel-Last");
+$.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        let active = (key===0) ? "show active" : "";
+        xhtml += `
+<div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
+                                <!-- Play Button -->
+                                <a href="${val.link}" class=""><i class="" aria-hidden="true"></i></a>
+
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="#" class="post-cata">${val.category.name}</a>
+                                    <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+                                    <div class="post-meta d-flex">
+                                    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                           
+                            </div>
+                        </div>
+
+                        </div>
+                        </div>
+                                                `;
+                    
+                    });
+                    
+                    
+                    elmAreaNewsHome_Last_one.html(xhtml);
+                    
+});
+
+let elmAreaNewsHome_Last_2 = $("#news-home-Travel-Last-1");  
+$.getJSON( API_PREFIX + "categories_news/11/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -727,8 +768,48 @@ elmAreaNewsHome_Last_2.html(xhtml);
 });
 
 
-let elmAreaNewsHome_Last_3 = $("#news-home-Last-3");  
-$.getJSON( API_PREFIX + "categories_news/9/articles?offset=0&limit=2&sort_by=id&sort_dir=desc", function( data ) {
+// cuối trang  suc khoe
+
+let elmAreaNewsHome_Health_Last = $("#news-home-Health-Last");
+$.getJSON( API_PREFIX + "categories_news/9/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        let active = (key===0) ? "show active" : "";
+        xhtml += `
+<div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
+                                <!-- Play Button -->
+                                <a href="${val.link}" class=""><i class="" aria-hidden="true"></i></a>
+
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="#" class="post-cata">${val.category.name}</a>
+                                    <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+                                    <div class="post-meta d-flex">
+                                    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                           
+                            </div>
+                        </div>
+
+                        </div>
+                        </div>
+                                                `;
+                    
+                    });
+                    
+                    
+                    elmAreaNewsHome_Health_Last.html(xhtml);
+                    
+});
+
+
+let elmAreaNewsHome_Health_last_1 = $("#news-home-Health-Last-1");  
+$.getJSON( API_PREFIX + "categories_news/9/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -766,12 +847,53 @@ $.getJSON( API_PREFIX + "categories_news/9/articles?offset=0&limit=2&sort_by=id&
 });
 
 
-elmAreaNewsHome_Last_3.html(xhtml);
+elmAreaNewsHome_Health_last_1.html(xhtml);
 
 });
 
-let elmAreaNewsHome_Last_4 = $("#news-home-Last-4");  
-$.getJSON( API_PREFIX + "categories_news/8/articles?offset=0&limit=2&sort_by=id&sort_dir=desc", function( data ) {
+
+// cuối trang  giáo dục
+
+let elmAreaNewsHome_Education_Last = $("#news-home-Education-Last");
+$.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+    let xhtml = '';
+    $.each( data, function( key, val ) {
+        let active = (key===0) ? "show active" : "";
+        xhtml += `
+<div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
+                                <!-- Play Button -->
+                                <a href="${val.link}" class=""><i class="" aria-hidden="true"></i></a>
+
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="#" class="post-cata">${val.category.name}</a>
+                                    <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+                                    <div class="post-meta d-flex">
+                                    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                           
+                            </div>
+                        </div>
+
+                        </div>
+                        </div>
+                                                `;
+                    
+                    });
+                    
+                    
+                    elmAreaNewsHome_Education_Last.html(xhtml);
+                    
+});
+
+
+let elmAreaNewsHome_Education_Last_1 = $("#news-Education-Last-1");  
+$.getJSON( API_PREFIX + "categories_news/8/articles?offset=2&limit=2&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -811,7 +933,7 @@ $.getJSON( API_PREFIX + "categories_news/8/articles?offset=0&limit=2&sort_by=id&
 });
 
 
-elmAreaNewsHome_Last_4.html(xhtml);
+elmAreaNewsHome_Education_Last_1.html(xhtml);
 
 });
 
