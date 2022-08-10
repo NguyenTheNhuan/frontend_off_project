@@ -225,40 +225,40 @@ showCoin();
         });}
 
         // tin mới nhất
-        let elmAreaLatestNews = $("#zvn-area-category-news-new");
+        // let elmAreaLatestNews = $("#zvn-area-category-news-new");
         //  $.getJSON( API_PREFIX + "articles?offset=6&limit=3&sort_by=id&sort_dir=desc", function( data ) {
-            $.getJSON( API_PREFIX + "articles?offset=80&limit=3&sort_by=id&sort_dir=desc", function( data ) {
-            let xhtml = '';
-            $.each( data, function( key, val ) {
+    //         $.getJSON( API_PREFIX + "articles?offset=80&limit=3&sort_by=id&sort_dir=desc", function( data ) {
+    //         let xhtml = '';
+    //         $.each( data, function( key, val ) {
                 
-                // if  (key > 5) return false;
-                xhtml += ` <div class="col-12 col-md-4">
-                    <div class="single-post-area mb-80">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="${val.thumb}" alt="">
+    //             if  (key > 5) return false;
+    //             xhtml += ` <div class="col-12 col-md-4">
+    //                 <div class="single-post-area mb-80">
+    //                     <!-- Post Thumbnail -->
+    //                     <div class="post-thumbnail">
+    //                         <img src="${val.thumb}" alt="">
 
                             
-                        </div>
+    //                     </div>
 
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
-                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
-                            <div class="post-meta d-flex" ${val.description}>
+    //                     <!-- Post Content -->
+    //                     <div class="post-content">
+    //                         <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
+    //                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
+    //                         <div class="post-meta d-flex" ${val.description}>
                             
-                            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+    //                         <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
 
-            </div>`;
-            });
-            elmAreaLatestNews.html(xhtml);
+    //         </div>`;
+    //         });
+    //         elmAreaLatestNews.html(xhtml);
         
-    });
+    // });
 
 
        // trang tin tức Kinh doanh, giải trí, du lịch
@@ -807,5 +807,103 @@ $.getJSON( API_PREFIX + "categories_news/8/articles?offset=0&limit=2&sort_by=id&
 elmAreaNewsHome_Last_4.html(xhtml);
 
 });
+
+
+// tin mới nhất (chỉnh lại)
+
+
+    let elmAreaNewsNew = $("#zvn-news-new");
+    $.getJSON( API_PREFIX + "articles?offset=1&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+            let xhtml = '';
+            $.each( data, function( key, val ) {
+                
+                // if  (key > 5) return false;
+                xhtml += `<div class="post-thumbnail">
+                            <img src="${val.thumb}" alt="">  
+                        </div>
+
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
+                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
+                            <div class="post-meta d-flex">
+                            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                             </div>
+            
+                     </div>`;
+                        });
+                        elmAreaNewsNew.html(xhtml);
+                    
+                });
+
+    let elmAreaNewsNew1 = $("#zvn-news-new-1");
+    $.getJSON( API_PREFIX + "articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+                            let xhtml = '';
+                            $.each( data, function( key, val ) {
+                                
+                                // if  (key > 5) return false;
+                                xhtml += `
+                <div class="post-thumbnail">
+                            <img src="${val.thumb}" alt="">
+
+                            
+                        </div>
+
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
+                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
+                            <div class="post-meta d-flex">
+                            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+        </div>`;
+           });
+           elmAreaNewsNew1.html(xhtml);
+       
+   });
+
+
+   let elmAreaNewsNew2 = $("#zvn-news-new-2");
+   $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", function( data ) {
+           let xhtml = '';
+           $.each( data, function( key, val ) {
+               
+               // if  (key > 5) return false;
+               xhtml += `<div class="post-thumbnail">
+                            <img src="${val.thumb}" alt="">
+
+                        </div>
+
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
+                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
+                        <div class="post-meta d-flex">
+                            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+                             </div>
+            
+                     </div>`;
+                        });
+                        elmAreaNewsNew2.html(xhtml);
+                    
+                });
 
 })(jQuery);
