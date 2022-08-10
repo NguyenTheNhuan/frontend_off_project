@@ -375,7 +375,7 @@ showCoin();
     
     
     let elmAreasportNews = $("#zvn-area-category-sport-news1");
-    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=11&limit=20&sort_by=id&sort_dir=desc", function( data ) {
+    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=34&limit=50&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         
@@ -403,7 +403,7 @@ showCoin();
 });
 
     let elmAreasportNewsHome = $("#zvn-area-category-sport-home");
-    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=11&limit=20&sort_by=id&sort_dir=desc", function( data ) {
+    $.getJSON( API_PREFIX + "categories_news/6/articles?offset=34&limit=50&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
         let active = (key===0) ? "show active" : "";
@@ -466,7 +466,7 @@ elmAreaNewsVideoHome.html(xhtml);
 
 });
 
-// trang tin tức ở giữa 2
+// trang tin tức ở giữa 2 (sau tin tức video)
     let elmAreaNewsHome_2a = $("#zvn-news-home_2a");
     $.getJSON( API_PREFIX + "categories_news/7/articles?offset=11&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
@@ -592,8 +592,8 @@ elmAreaNewsHome_2b.html(xhtml);
 // }
 
 
-// tin tưc cuoi Trang
 
+// tin tưc cuoi Trang
 let elmAreaNewsHome_Last = $("#news-home-Last");
 $.getJSON( API_PREFIX + "categories_news/2/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
