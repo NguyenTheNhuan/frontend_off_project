@@ -435,36 +435,43 @@ elmAreasportNewsHome.html(xhtml);
 
 
 // trang video tin tức ở giưa
+// showVideoInTop = () => {
+//     let showVideoTOP = $("#zvn-news-video-home");
+//     // $.getJSON( API_PREFIX + "playlists/7/videos?offset=0&limit=1&sort_by=id&sort_dir=asc", function( data ) {
+//          $.getJSON( API_PREFIX + "playlists/7/videos?offset=0&limit=1&sort_by=id&sort_dir=asc", function( data ) {
+//     let xhtmlTop = '';
+//     let xhtmlBottom = '';
 
-    let elmAreaNewsVideoHome = $("#zvn-news-video-home");
-    $.getJSON( API_PREFIX + "playlists/7/videos?offset=10&limit=1&sort_by=id&sort_dir=asc", function( data ) {
-    let xhtml = '';
-    $.each( data, function( key, val ) {
-        let active = (key===0) ? "show active" : "";
-        xhtml += ` <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumbnail});">
-        <!-- Play Button -->
-        <a href="${val.youtube_id}" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+//     $.each( data, function( key, val ) {
+//         let thumbnailObj = JSON.parse(val.thumbnail);
+//         let classActiveBottom = (key===0) ? "show active" : "";
+//         xhtmlTop += ` <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumbnail});">
+//         <!-- Play Button -->
+//         <a href="" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
 
-        <!-- Post Content -->
-        <div class="post-content">
-            <a href="#" class="post-cata">${val.category.name}</a>
-            <a href="${val.youtube_id}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumbnail}', '${val.youtube_id}')" class="post-title mb-2">${val.title}</a>
-            <div class="post-meta d-flex">
-            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
-            </div>
-        </div>
+//         <!-- Post Content -->
+//         <div class="post-content">
+//             <a href="#" class="post-cata">${val.category.name}</a>
+//             <a href="" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumbnail}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
+//             <div class="post-meta d-flex">
+                
+//             </div>
+//         </div>
 
-        <!-- Video Duration -->
-        <span class="video-duration">05.03</span>
-    </div>
-                                </div>
-                            </div>
-                            </div>    `;
-});
+//         <!-- Video Duration -->
+//         <span class="video-duration">05.03</span>
+//     </div>
+// </div>
+//                                 </div>
+//                             </div>
+//                             </div>    `;
+// });
 
-elmAreaNewsVideoHome.html(xhtml);
 
-});
+// showVideoTOP.html(xhtml);
+
+// });
+// }
 
 // trang tin tức ở giữa 2 (sau tin tức video)
     let elmAreaNewsHome_2a = $("#zvn-news-home_2a");
@@ -880,22 +887,21 @@ elmAreaNewsHome_Last_4.html(xhtml);
            $.each( data, function( key, val ) {
                
                // if  (key > 5) return false;
-               xhtml += `<div class="post-thumbnail">
-                            <img src="${val.thumb}" alt="">
+               xhtml += ` <div class="post-thumbnail">
+               <img src="${val.thumb}" alt="">
 
-                        </div>
+              
+           </div>
 
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
-                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
-                        <div class="post-meta d-flex">
-                            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
-   
-                            </div>
-                        </div>
-                    </div>
-                </div>
+           <!-- Post Content -->
+           <div class="post-content">
+               <a href="#" class="post-cata cata-sm cata-primary">${val.category.name}</a>
+               <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
+               <div class="post-meta d-flex">
+               <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+               </div>
+           </div>
+       </div>
 
                 </div>
                              </div>
