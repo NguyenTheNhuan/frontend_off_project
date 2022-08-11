@@ -1,0 +1,1 @@
+let elmNameCategory = $("#api-name-category");

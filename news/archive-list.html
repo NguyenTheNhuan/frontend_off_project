@@ -107,13 +107,13 @@
                                 <ul>
                                     <li class="active"><a href="index.html">Trang chủ</a></li>
 
-                                    <li><a href="#">Tin tức</a>
+                                    <li><a href="archive-list.html">Tin tức</a>
                                         <ul class="dropdown" id="zvn-area-category-news">
                                             
                                         </ul>
                                     </li>
                                     
-                                    <li><a href="contact.html">Yêu thích</a></li>
+                                    <li><a href="yeuthich.html">Yêu thích</a></li>
                                     </ul>                                   
                             </div>
                             <!-- Nav End -->
@@ -132,8 +132,8 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Nhà</a></li>
-                            <li class="breadcrumb-item"><a href="#">Tính năng</a></li>
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tin tức</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Lưu trữ theo thể loại Tin tức</li>
                         </ol>
                     </nav>
@@ -149,10 +149,10 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8" >
                     <!-- Archive Catagory & View Options -->
-                    <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
+                    <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between" id="api-name-category">
                         <!-- Catagory -->
                         <div class="archive-catagory">
-                            <!-- <h4><i class="fa fa-news" aria-hidden="true"></i> Tin tức </h4> -->
+                            <h4><i class="fa fa-news" aria-hidden="true"></i> Tin tức </h4>
                         </div>
                         <!-- View Options -->
                         <div class="view-options">
@@ -187,14 +187,80 @@
                             <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span class="counter">220</span><span>Followers</span></a>
                             <a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i><span class="counter">140</span><span>Subscribe</span></a>
                         </div>
+                    <!-- ***** Single Widget ***** -->
+                    <div class="single-widget latest-video-widget mb-50">
+                        <!-- Section Heading -->
+                        <div class="section-heading style-2 mb-30">
+                            <h4 style="font-family: Bookman;">Video mới nhất</h4>
+                            <div class="line"></div>
+                        </div>
 
+                        <!-- Single Blog Post -->
+                        <div class="single-post-area mb-30">
+                            <!-- Post Thumbnail -->
+                            <div class="post-thumbnail">
+                                <img src="img/bg-img/13.jpg" alt="">
+
+                                <!-- Video Duration -->
+                                <span class="video-duration">05.03</span>
+                            </div>
+
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <a href="#" class="post-cata cata-sm cata-success">Sports</a>
+                                <a href="single-post.html" class="post-title">Full article Prince Charles's 'urgent' global research</a>
+                                <div class="post-meta d-flex">
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Blog Post -->
+                        <div class="single-blog-post d-flex">
+                            <div class="post-thumbnail">
+                                <img src="img/bg-img/1.jpg" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
+                                <div class="post-meta d-flex justify-content-between">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Blog Post -->
+                        <div class="single-blog-post d-flex">
+                            <div class="post-thumbnail">
+                                <img src="img/bg-img/2.jpg" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="single-post.html" class="post-title">Sweet Yummy Chocolatea Tea</a>
+                                <div class="post-meta d-flex justify-content-between">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Blog Post -->
+                        <div class="single-blog-post d-flex">
+                            <div class="post-thumbnail">
+                                <img src="img/bg-img/35.jpg" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
+                                <div class="post-meta d-flex justify-content-between">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
                         
 
                        <!-- ***** GIÁ VÀNG ***** -->
                       <div class="single-widget latest-video-widget mb-50">
                         <div class="section-heading style-2 mb-30" id="zvn-area-gold"> 
                             <!-- <div class="area-gold-item"> -->
-                                <h4>Giá vàng</h4>
+                                <h4 style="font-family: Bookman;">Giá vàng</h4>
                             <!-- </div> -->
                             <div class="line"></div>
                         </div>
@@ -203,7 +269,7 @@
                     <!-- ***** GIÁ COIN ***** -->
                     <div class="single-widget latest-video-widget mb-50">
                         <div class="section-heading style-2 mb-30" id="zvn-area-coin"> 
-                            <h4>Giá coin</h4>
+                            <h4 style="font-family: Bookman;">Giá coin</h4>
                             <div class="line"></div>
                         </div>
                     </div>
@@ -212,53 +278,13 @@
                    
                 </div>
                                <!-- ***** Single Widget ***** -->
-                               <div class="single-widget latest-video-widget mb-50">
-                                <!-- Section Heading -->
-                                <div class="section-heading style-2 mb-30">
-                                    <!-- <h4>Latest Video</h4> -->
-                                    <h4>Tin tức và Video nổi bật</h4>
-                                    <div class="line"></div>
-                                </div>
-            
-                                <!-- Single Blog Post -->
-                                <div class="single-post-area mb-30">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="img/bg-img/77.png" alt="">
-            
-                                        <!-- Video Duration -->
-                                        <span class="video-duration">05.03</span>
-                                    </div>
-            
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="post-cata cata-sm cata-success">Thể thao</a>
-                                        <a href="https://vnexpress.net/6-dieu-dang-cho-doi-o-ngoai-hang-anh-mua-moi-4494047.html" class="post-title">6 điều đáng chờ đợi ở Ngoại hạng Anh mùa mới</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                            <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
-                                        </div>
-                                        
-                                    </div>
                                
-                                        <!-- <a href="https://vietnamnet.vn/hinh-anh-dau-tien-cua-ronaldo-trong-mau-ao-mu-770935.html"><img src="img/bg-img/7_b.jpg" alt=""></a> -->  
-                                    </div>
-            
-                            </div>
-                           
-                            <div class="single-widget add-widget mb-50">
-                                
-                                <a href="#"><img src="img/bg-img/add.png" alt=""></a>
-                                
-                            </div>
             
                                <!-- ***** Sidebar Widget ***** -->
                                <div class="single-widget youtube-channel-widget mb-50">
                                 <!-- Section Heading -->
                                 <div class="section-heading style-2 mb-30">
-                                    <h4>Youtube</h4>
+                                    <h4 style="font-family: Bookman;">Youtube</h4>
                                     <div class="line"></div>
                                 </div>
             
@@ -320,11 +346,95 @@
                                     </div>
                                 </div>
             </div>
+
+            <!-- ***** Single Widget ***** -->
+ <div class="single-widget mb-50">
+    <!-- Section Heading -->
+    <div class="section-heading style-2 mb-30">
+        <h4 style="font-family: Bookman;">Danh sách Video được xem nhiều nhất</h4>
+        <div class="line"></div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post d-flex">
+        <div class="post-thumbnail">
+            <img src="img/bg-img/1.jpg" alt="">
+        </div>
+        <div class="post-content">
+            <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
+            <div class="post-meta d-flex justify-content-between">
+                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post d-flex">
+        <div class="post-thumbnail">
+            <img src="img/bg-img/2.jpg" alt="">
+        </div>
+        <div class="post-content">
+            <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
+            <div class="post-meta d-flex justify-content-between">
+                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post d-flex">
+        <div class="post-thumbnail">
+            <img src="img/bg-img/36.jpg" alt="">
+        </div>
+        <div class="post-content">
+            <a href="single-post.html" class="post-title">Sweet Yummy Chocolate in the</a>
+            <div class="post-meta d-flex justify-content-between">
+                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post d-flex">
+        <div class="post-thumbnail">
+            <img src="img/bg-img/37.jpg" alt="">
+        </div>
+        <div class="post-content">
+            <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
+            <div class="post-meta d-flex justify-content-between">
+                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post d-flex">
+        <div class="post-thumbnail">
+            <img src="img/bg-img/38.jpg" alt="">
+        </div>
+        <div class="post-content">
+            <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
+            <div class="post-meta d-flex justify-content-between">
+                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
+                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+            </div>
+        </div>
+    </div>
+</div>
                      <!-- ***** Single Widget ***** -->
                      <div class="single-widget latest-video-widget mb-50" >
                         <!-- Section Heading -->
                         <div class="section-heading style-2 mb-30">
-                            <h4>Tin tức bạn đã xem</h4>
+                            <h4 style="font-family: Bookman;">Tin tức bạn đã xem</h4>
                             <div class="line"></div>
                         </div>
                             <div id="zvn-viewed"></div>
@@ -351,61 +461,38 @@
     </section>
    
 
-   <!-- ##### Archive List Posts Area End ##### -->
-
-    <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
-        <div class="container">
-            <div class="row">
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-xl-6">
-                    <div class="footer-widget mb-70">
-                        <!-- Logo -->
-                        <a href="index.html" class="foo-logo d-block mb-4"><img src="img/core-img/news-logo.png" alt=""></a>
-                        <p></p>
-                        
-                    </div>
-                </div>
-
-            
-
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-xl-6">
-                    <div class="footer-widget mb-70">
-                        <h6 class="widget-title">Social Network</h6>
-                        <!-- Contact Address -->
-                       
-                        <!-- Footer Social Area -->
-                        <div class="footer-social-area">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-         <!-- Copywrite Area -->
-         <div class="copywrite-area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <!-- Copywrite Text -->
-                    <div class="col-12 col-sm-6">
-                        <h6 style="color:#a6a6a6" class="text-400 mt-3 font-weight-bold ls">SAIGON, 2022<span class="ml-3">(037) 303 - 0620</span><span class="ml-3 mt-1 mt-md-0 d-inline-block">THENHUAN2208@GMAIL.COM</span></h6>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <nav class="footer-nav">
-                            <p class="pt-4 mb-3 mb-0 text-700" > This template is made with <a class="text-700 text-decoration-none" href="https://www.facebook.com/thenhuan2002"><span class="border-bottom border-800 border-2x" style="line-height:10px;margin-bottom:10px"> <i class="fa fa-heart-o" aria-hidden="true"></i> Nguyen The Nhuan</span></a></p>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>                           
+        
+        <!-- Copywrite Area -->
+        <div class="copywrite-area">
+           <div class="container">
+               <div class="row align-items-center">
+                   <!-- Copywrite Text -->
+                   <div class="col-12 col-sm-6">
+                       <h6 style="color:#a6a6a6" class="text-400 mt-3 font-weight-bold ls">SAIGON, 2022<span class="ml-3">(037) 303 - 0620</span><span class="ml-3 mt-1 mt-md-0 d-inline-block">THENHUAN2208@GMAIL.COM</span></h6>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                       <nav class="footer-nav">
+                           <div class="col-12 col-sm-6 col-xl-6">
+                               <div class="footer-widget mb-70">
+                                   <p class="pt-4 mb-3 mb-0 text-700" > </p>
+                                   <div class="footer-social-area">
+                                       <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                       <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                       <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                                       <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                       <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                                   </div>
+                                   
+                                   
+                               </div>
+                           </div>
+                       </nav>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </footer>                            
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Script ##### -->
@@ -419,7 +506,9 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
    
+    <script src="js/defined.js"></script>
     <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
     <script src="js/event.js"></script>
     <script src="js/active.js"></script>
 </body>

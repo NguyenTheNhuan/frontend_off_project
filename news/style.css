@@ -1748,7 +1748,7 @@ input:focus {
 .footer-area {
   position: relative;
   z-index: 1;
-  background-color: #191c1d;
+  /* background-color: #191c1d; */
   padding-top: 30px; }
   .footer-area .footer-widget {
     position: relative;
