@@ -32,37 +32,37 @@ addItem = (id, title, thumb, link) => {
     return items;
 }
 
-
+// xóa thêm yêu thích
 loadLove = () => {
-    return JSON.parse(localStorage.getItem("ARTICLES_LOVED")) ;
+    return JSON.parse(localLove.getItem("ARTICLES_LOVED")) ;
 }
 
-saveStorage = (items) => {
-    localStorage.setItem("ARTICLES_VIEWED", JSON.stringify(items));
+saveLove = (items) => {
+    localLove.setItem("ARTICLES_LOVED", JSON.stringify(items));
 }
 
-listItems = () => {
-    let items = loadStorage() ;
+listItemsLove = () => {
+    let items = loadLove() ;
     if(items === null) items = [];  // 
     return items;
 }
 
 
-deleteItem = (id) => {
-  let items = listItems(); 
+deleteItemLove = (id) => {
+  let items = listItemsLove(); 
   items = items.filter(item => item.id !== id);
-  saveStorage(items);
+  saveLove(items);
   return items;
 }
 
-addItem = (id, title, thumb, link) => {
+addItemLove = (id, title, thumb, link) => {
     let taskNew = {id: id, title: title, thumb: thumb, link:link};
    
-    let items = listItems();
+    let items = listItemsLove();
     items.push(taskNew);
 
     // Lưu item vào storgare
-    saveStorage(items);
+    saveLove(items);
 
     return items;
 }
