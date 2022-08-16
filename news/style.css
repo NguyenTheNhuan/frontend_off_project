@@ -1987,3 +1987,12 @@ div.area-coin-item span.red {
 div.area-coin-item span.green {
   color: #3cb878;
 }
+
+a#nav-profile-tab:hover, a#nav-home-tab:hover {
+  background-color:darkcyan;
+}
+
+a#nav-profile-tab.active, a#nav-home-tab.active {
+  background-color:darkcyan;
+}
+

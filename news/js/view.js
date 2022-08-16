@@ -22,15 +22,38 @@
         }
         return decodeURI(results[1]) || 0;
     }
-    
+    function showItemss() { 
+        let nameCategory = $("#news-name")
         let idParam = $.urlParam('id');
-        let elmAreaListNews = $("#zvn-area-list-news");
         if (idParam !== null) {
-           
         $.getJSON( API_PREFIX + "categories_news/" + idParam + "/articles", function( data ) {
             let xhtml = '';
+            let name  = data[0].category.name
+            nameCategory.text(name)
             $.each( data, function( key, val ) {
-               
+                let title = val.title.replace(/'/g, '').replace(/"/g, '');   
+                let description = val.description.replace(/'/g, '').replace(/"/g, '');  
+                let statusHeart = `
+                            <a href="javascript:void(0);" onClick="funcLove('${val.id}','`+title+`','${val.thumb}','${val.link}','${description}','${val.category.name}','newsLove');">
+                            <span class="badge badge-danger font-weight-bold loveItems" data-type="news">
+                                <i class="fa-solid fa-heart" style="margin-right: 4px;"></i>Thích
+                        </span>
+                    </a>               `
+                let day = val.publish_date.split(" ")[0].split("-")
+                let time = val.publish_date.split(" ")[1]
+                let loveNews = loadLove();
+                
+                let idNews = val.id;
+                $.each(loveNews, function (key, val) {
+             if (val.id == idNews) {
+                        statusHeart = `
+                        <a href="javascript:void(0);" onClick="funcRemoveLove(${val.id},'newsLove');">
+                             <span class="badge badge-danger font-weight-bold loveItems bg-white text-primary" data-type="news">
+                                 <i class="fa-solid fa-heart text-primary" style="margin-right: 4px;"></i>Bỏ Thích
+                            </span>
+                        </a>`
+                    }
+                })
                 xhtml += ` <div class="single-post-area style-2">
                 <div class="row align-items-center">
                     <div class="col-12 col-md-6">
@@ -47,25 +70,77 @@
                         <div class="post-content mt-0">
                            
                             <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a> 
-                            <div class="post-meta d-flex align-items-center mb-2">
-                            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
-                                <a href="#"><i class="fas fa-heart" aria-hidden="true"></i>Yêu thích</a>
+                            <div class="post-meta   ">
+                                <p class="text-light mb-0"><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</p>
                             </div>
                             <p class="mb-2">${val.description}</p>
-                            <div class="post-meta d-flex">
-                                
-                                
-                            </div>
+                            ${statusHeart}
                         </div>
                     </div>
                 </div>
             </div>`;
             });
-           
-            elmAreaListNews.append(xhtml);
+            elmAreaListNews.html(xhtml);
+            
         });
-    }
-
+    } else {
+        $.getJSON( API_PREFIX + "articles?offset=0&limit=20&sort_by=id&sort_dir=desc", function( data ) {
+            let xhtml = '';
+            
+            $.each( data, function( key, val ) {
+                let title = val.title.replace(/'/g, '').replace(/"/g, '');   
+                let description = val.description.replace(/'/g, '').replace(/"/g, '');  
+                let statusHeart = `
+                            <a href="javascript:void(0);" onClick="funcLove('${val.id}','`+title+`','${val.thumb}','${val.link}','${description}','${val.category.name}','newsLove');">
+                            <span class="badge badge-danger font-weight-bold loveItems" data-type="news">
+                                <i class="fa-solid fa-heart" style="margin-right: 4px;"></i>Thích
+                        </span>
+                    </a>               `
+                let day = val.publish_date.split(" ")[0].split("-")
+                let time = val.publish_date.split(" ")[1]
+                let loveNews = loadLove();
+                
+                let idNews = val.id;
+                $.each(loveNews, function (key, val) {
+             if (val.id == idNews) {
+                        statusHeart = `
+                        <a href="javascript:void(0);" onClick="funcRemoveLove(${val.id},'newsLove');">
+                             <span class="badge badge-danger font-weight-bold loveItems bg-white text-primary" data-type="news">
+                                 <i class="fa-solid fa-heart text-primary" style="margin-right: 4px;"></i>Bỏ Thích
+                            </span>
+                        </a>`
+                    }
+                })
+                xhtml += ` <div class="single-post-area style-2">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <!-- Post Thumbnail -->
+                        <div class="post-thumbnail">
+                            <img src="${val.thumb}" alt="">
+    
+                            <!-- Video Duration -->
+                            <span class="video-duration">05.03</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <!-- Post Content -->
+                        <div class="post-content mt-0">
+                           
+                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a> 
+                            <div class="post-meta   ">
+                                <p class="text-light mb-0"><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</p>
+                            </div>
+                            <p class="mb-2">${val.description}</p>
+                            ${statusHeart}
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            });
+            elmAreaListNews.html(xhtml);
+            
+        });
+    }}
     // Giá vàng
 let elmAreaGold = $("#zvn-area-gold");
 function showGold() {
@@ -73,7 +148,7 @@ function showGold() {
     $.getJSON( API_PREFIX + "get-gold", function( data ) {
         let xhtml = '';
         $.each( data, function( key, val ) {
-            console.log(val);
+        
             xhtml += `<div class="area-gold-item">
                     <p>${val.type}</p>
                     Mua: <span class="buy">${val.buy}.000đ</span>, Bán <span class="sell">${val.sell}.000đ</span>
@@ -107,14 +182,14 @@ showCoin();
 
 // trang tin tức đầu bài
     
-
-let elmAreasportNews = $("#zvn-area-category-sport-news1");
 $.getJSON( API_PREFIX + "categories_news/6/articles?offset=34&limit=50&sort_by=id&sort_dir=desc", function( data ) {
 let xhtml = '';
 $.each( data, function( key, val ) {
-    
+
+    let active = (key === 0) ? "active" : "";
+
     xhtml += `<li class="nav-item">
-    <a class="nav-link " id="post-${key}-tab" data-toggle="pill" href="#post-${key}" role="tab" aria-controls="post-${key}" aria-selected="true">
+    <a class="nav-link ${active} id="post-${key}-tab" data-toggle="pill" href="#post-${key}" role="tab" aria-controls="post-${key}" aria-selected="true">
         <!-- Single Blog Post -->
         <div class="single-blog-post style-2 d-flex align-items-center">
             <div class="post-thumbnail">
@@ -140,6 +215,8 @@ let elmAreasportNewsHome = $("#zvn-area-category-sport-home");
 $.getJSON( API_PREFIX + "categories_news/6/articles?offset=34&limit=50&sort_by=id&sort_dir=desc", function( data ) {
 let xhtml = '';
 $.each( data, function( key, val ) {
+    let day = val.publish_date.split(" ")[0].split("-")
+    let time = val.publish_date.split(" ")[1]
     let active = (key===0) ? "show active" : "";
     xhtml += `<div class="tab-pane fade ${active}" id="post-${key}" role="tabpanel" aria-labelledby="post-${key}-tab">
     <!-- Single Feature Post -->
@@ -152,9 +229,9 @@ $.each( data, function( key, val ) {
             <a href="" class="post-cata">${val.category.name}</a>
             <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a> 
             <div class="post-meta d-flex">
-            <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+            <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
 
-               
+            
             </div>
         </div>
 
@@ -175,6 +252,8 @@ let elmAreaNewsHome_Last = $("#news-home-news-Last");
 $.getJSON( API_PREFIX + "categories_news/2/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+        let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
 <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
@@ -183,10 +262,10 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=0&limit=1&sort_by=id&
 
                                 <!-- Post Content -->
                                 <div class="post-content">
-                                    <a href="#" class="post-cata">${val.category.name}</a>
-                                    <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
+                                        <a href="#" class="post-cata">${val.category.name}</a>
+                                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
-                                    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
                                     </div>
                                 </div>
 
@@ -213,6 +292,8 @@ let elmAreaNewsHome_Last_1 = $("#news-home-new-Last-1");
 $.getJSON( API_PREFIX + "categories_news/2/articles?offset=2&limit=2&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+        let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `<div class="col-12 col-lg-6">
 <!-- Post Thumbnail -->
@@ -228,7 +309,8 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=2&limit=2&sort_by=id&
     <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
     <div class="post-meta d-flex align-items-center mb-2">
-    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+    <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `
+    </a>
     </div>
     <p class="mb-2">${val.description}</p>
     <div class="post-meta d-flex">
@@ -258,6 +340,8 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=2&limit=2&sort_by=id&
 $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+                let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
 <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
@@ -269,7 +353,7 @@ $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=1&sort_by=id
                                     <a href="#" class="post-cata">${val.category.name}</a>
                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
-                                    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                                    <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
                                     </div>
                                 </div>
 
@@ -295,6 +379,9 @@ let elmAreaNewsHome_Last_2 = $("#news-home-Travel-Last-1");
 $.getJSON( API_PREFIX + "categories_news/11/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+                let time = val.publish_date.split(" ")[1]
+
         let active = (key===0) ? "show active" : "";
         xhtml += `
 <div class="col-12 col-lg-6">
@@ -311,7 +398,7 @@ $.getJSON( API_PREFIX + "categories_news/11/articles?offset=1&limit=3&sort_by=id
                 <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
                 <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                 <div class="post-meta d-flex align-items-center mb-2">
-                <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                <a href="#"><i class="" aria-hidden="true"></i> <i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
                 </div>
                 <p class="mb-2">${val.description}</p>
                 <div class="post-meta d-flex">
@@ -342,6 +429,8 @@ let elmAreaNewsHome_Health_Last = $("#news-home-Health-Last");
 $.getJSON( API_PREFIX + "categories_news/9/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+        let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
 <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
@@ -353,7 +442,7 @@ $.getJSON( API_PREFIX + "categories_news/9/articles?offset=0&limit=1&sort_by=id&
                                     <a href="#" class="post-cata">${val.category.name}</a>
                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
-                                    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                                    <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
                                     </div>
                                 </div>
 
@@ -380,6 +469,8 @@ let elmAreaNewsHome_Health_last_1 = $("#news-home-Health-Last-1");
 $.getJSON( API_PREFIX + "categories_news/9/articles?offset=1&limit=3&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+        let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
 <div class="col-12 col-lg-6">
@@ -396,7 +487,7 @@ $.getJSON( API_PREFIX + "categories_news/9/articles?offset=1&limit=3&sort_by=id&
                 <a href="#" class="post-cata cata-sm cata-primary">${val.category.name}</a>
                 <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                 <div class="post-meta d-flex align-items-center mb-2">
-                <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
                 </div>
                 <p class="mb-2">${val.description}</p>
                 <div class="post-meta d-flex">
@@ -426,6 +517,8 @@ let elmAreaNewsHome_Education_Last = $("#news-home-Education-Last");
 $.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=1&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+        let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
 <div class="single-feature-post video-post bg-img" style="background-image: url(${val.thumb});">
@@ -437,7 +530,7 @@ $.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=1&sort_by=id&
                                     <a href="#" class="post-cata">${val.category.name}</a>
                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
-                                    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                                    <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
                                     </div>
                                 </div>
 
@@ -464,6 +557,8 @@ let elmAreaNewsHome_Education_Last_1 = $("#news-Education-Last-1");
 $.getJSON( API_PREFIX + "categories_news/8/articles?offset=2&limit=2&sort_by=id&sort_dir=desc", function( data ) {
     let xhtml = '';
     $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+        let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
 <div class="col-12 col-lg-6">
@@ -481,7 +576,7 @@ $.getJSON( API_PREFIX + "categories_news/8/articles?offset=2&limit=2&sort_by=id&
     <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
     <div class="post-meta d-flex align-items-center mb-2">
-    <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+    <a href="#"><i class="" aria-hidden="true"></i> <i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
     </div>
     <p class="mb-2">${val.description}</p>
     <div class="post-meta d-flex">
@@ -513,6 +608,9 @@ let elmAreaNewsNew = $("#zvn-news-new");
 $.getJSON( API_PREFIX + "articles?offset=1&limit=1&sort_by=id&sort_dir=desc", function( data ) {
         let xhtml = '';
         $.each( data, function( key, val ) {
+            let day = val.publish_date.split(" ")[0].split("-")
+            let time = val.publish_date.split(" ")[1]
+
             
             // if  (key > 5) return false;
             xhtml += `<div class="post-thumbnail">
@@ -524,7 +622,9 @@ $.getJSON( API_PREFIX + "articles?offset=1&limit=1&sort_by=id&sort_dir=desc", fu
                         <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
                         <div class="post-meta d-flex">
-                        <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                        <p class="text-light mb-0"></p>
+                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
+
                         </div>
                     </div>
                 </div>
@@ -542,7 +642,8 @@ let elmAreaNewsNew1 = $("#zvn-news-new-1");
 $.getJSON( API_PREFIX + "articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
                         let xhtml = '';
                         $.each( data, function( key, val ) {
-                            
+                            let day = val.publish_date.split(" ")[0].split("-")
+            let time = val.publish_date.split(" ")[1]
                             // if  (key > 5) return false;
                             xhtml += `
             <div class="post-thumbnail">
@@ -556,7 +657,9 @@ $.getJSON( API_PREFIX + "articles?offset=0&limit=1&sort_by=id&sort_dir=desc", fu
                         <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
                         <div class="post-meta d-flex">
-                        <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+                        <p class="text-light mb-0"></p>
+                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
+
                         </div>
                     </div>
                 </div>
@@ -575,6 +678,8 @@ let elmAreaNewsNew2 = $("#zvn-news-new-2");
 $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", function( data ) {
        let xhtml = '';
        $.each( data, function( key, val ) {
+        let day = val.publish_date.split(" ")[0].split("-")
+            let time = val.publish_date.split(" ")[1]
            
            // if  (key > 5) return false;
            xhtml += ` <div class="post-thumbnail">
@@ -588,7 +693,8 @@ $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", fu
            <a href="#" class="post-cata cata-sm cata-primary">${val.category.name}</a>
            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
            <div class="post-meta d-flex">
-           <a href="#"><i class="" aria-hidden="true"></i> ${val.publish_date}</a>
+           <p class="text-light mb-0"></p>
+           <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
            </div>
        </div>
    </div>
@@ -599,5 +705,70 @@ $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", fu
                  </div>`;
                     });
                     elmAreaNewsNew2.html(xhtml);
+
+
+
+        // xem nhieu nhat
+        let elmFilmBestView     = $("#api-film-best-view");
+        showBestView = () => {
+            let items = getFilmBestView(5);
+            let xhtm = "";
+             $.each(items,  function (key, val) {
+                xhtm+=  `
+                    <a href="anime-watching.html?watching=${val.id}">
+                        <div class="product__sidebar__view__item set-bg mix day years bg-image"
+                        style="background-image: url('${val.thumbnail}');">
+                                <div class="view"><i class="fa fa-eye"></i>`+val.viewCount.toLocaleString()+`</div>
+                                <h5>${val.title}</h5>
+                        </div>
+                    </a>
+                    `
+            });
+            elmFilmBestView.html(xhtm);
+        }
                 
             });
+
+showLoveNews = () =>{
+    console.log("DDDD");
+        let xhtml = '';
+        let data= loadLove()
+        $.each( data, function( key, val ) {
+
+            
+            let idNews = val.id;
+                    statusHeart = `
+                    <a href="javascript:void(0);" onClick="funcRemoveLove(${val.id},'newsLove');">
+                         <span class="badge badge-danger font-weight-bold loveItems bg-white text-primary" data-type="news">
+                             <i class="fa-solid fa-heart text-primary" style="margin-right: 4px;"></i>Bỏ Thích
+                        </span>
+                    </a>`
+            xhtml += ` <div class="single-post-area style-2">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <!-- Post Thumbnail -->
+                    <div class="post-thumbnail">
+                        <img src="${val.thumb}" alt="">
+
+                        <!-- Video Duration -->
+                        <span class="video-duration">05.03</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <!-- Post Content -->
+                    <div class="post-content mt-0">
+                       
+                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a> 
+                        <div class="post-meta   ">
+                        </div>
+                        <p class="mb-2">${val.description}</p>
+                        ${statusHeart}
+                    </div>
+                </div>
+            </div>
+        </div>`;
+        });
+        elmLoveNews.html(xhtml);
+    
+
+}

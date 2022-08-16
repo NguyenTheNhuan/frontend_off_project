@@ -72,3 +72,26 @@ funcDeleteArticleViewed= (id) => {
         showArticleViewed(items);
     } 
 }
+
+
+funcLove = (id, title, thumb, link, description, category, local ) => {
+    addItemLove(id, title, thumb, link,description, category, local);
+    showItemss();
+    // showItemsCategory();
+    // showArticleNew();
+    // showArticleLove();
+   // Load lại danh sách
+}
+funcRemoveLove = (id, local) => {
+    let items = listItemss();
+    items = $.grep(items, function(e){ 
+        return e.id != id; 
+   });
+   saveLove(items);
+   showItemss();
+   showLoveNews();
+//    showItemsCategory();
+//    showArticleNew();
+//    showArticleLove();
+//    showItemsCategory();
+}

@@ -34,37 +34,38 @@ addItem = (id, title, thumb, link) => {
 
 // xóa thêm yêu thích
 loadLove = () => {
-    return JSON.parse(localLove.getItem("ARTICLES_LOVED")) ;
+    return JSON.parse(localStorage.getItem("newsLove")) ;
 }
 
-saveLove = (items) => {
-    localLove.setItem("ARTICLES_LOVED", JSON.stringify(items));
+saveLove = (loves) => {
+    localStorage.setItem("newsLove", JSON.stringify(loves));
 }
 
-listItemsLove = () => {
-    let items = loadLove() ;
-    if(items === null) items = [];  // 
-    return items;
+listItemss = () => {
+    let loves = loadLove() ;
+    if(loves === null) loves = [];  // 
+    return loves;
 }
 
 
 deleteItemLove = (id) => {
-  let items = listItemsLove(); 
-  items = items.filter(item => item.id !== id);
-  saveLove(items);
-  return items;
+  let loves = loadLove(); 
+  loves = loves.filter(item => item.id !== id);
+  saveLove(loves);
+  showItemss();
+  return loves;
 }
 
-addItemLove = (id, title, thumb, link) => {
-    let taskNew = {id: id, title: title, thumb: thumb, link:link};
+addItemLove = (id, title, thumb, link, description, category, local ) => {
+    let taskNew = {id, title, thumb, link, description, category, local };
    
-    let items = listItemsLove();
-    items.push(taskNew);
+    let loves = listItemss();
+    loves.push(taskNew);
 
     // Lưu item vào storgare
-    saveLove(items);
-
-    return items;
+    saveLove(loves);
+    showItemss();
+    return loves;
 }
 
 
