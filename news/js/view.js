@@ -729,6 +729,8 @@ $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", fu
                 
             });
 
+
+            // yeu thich va bo thich
 showLoveNews = () =>{
     console.log("DDDD");
         let xhtml = '';
@@ -772,3 +774,123 @@ showLoveNews = () =>{
     
 
 }
+
+
+// videos giua trang
+showvideo = () => {
+    let xhtml = "";
+    $.getJSON( API_PREFIX + "playlists?offset=0&sortBy=id&sort_dir=asc&type=course", function( data ) {
+        $.each( data, function( key, val ) {
+            let strJSONImg = val.thumbnail.replace(/"\"/g,"")
+             let thumbnailJson = JSON.parse(strJSONImg);
+             console.log(thumbnailJson)
+
+              thumbLink = thumbnailJson.maxres.url
+              console.log(thumbLink)
+              console.log(val.id)
+              if (key > 0) return false;
+        xhtml += `<div class="single-feature-post video-post bg-img" style="background-image: url(${thumbLink});">
+        <!-- Play Button -->
+        <a href="/news/video-post.html?idplaylist=${val.id}" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+
+        <!-- Post Content -->
+        <div class="post-content">
+            <a href="#" class="post-cata">Khóa Học</a>
+            <a href="/news/video-post.html?idplaylist=${val.id}" class="post-title">${val.title}</a>
+            <div class="post-meta d-flex">
+                
+            </div>
+        </div>
+        </div>
+  `
+        })
+        elmNewsvideo.html(xhtml);
+    }
+    )
+
+}
+
+showvideosmall = () => {
+    console.log("uuu")
+    let xhtml = "";
+    $.getJSON( API_PREFIX + "playlists?offset=5&limit=1&sortBy=id&sort_dir=asc&type=course", function( data ) {
+        $.each( data, function( key, val ) {
+            let strJSONImg = val.thumbnail.replace(/"\"/g,"")
+             let thumbnailJson = JSON.parse(strJSONImg);
+             console.log(thumbnailJson)
+
+              thumbLink = thumbnailJson.maxres.url
+              console.log(thumbLink)
+              console.log(val.id)
+              if (key > 0) return false;
+        xhtml += `<div class="single-post-area mb-80">
+        <!-- Post Thumbnail -->
+        <div class="post-thumbnail">
+            <img src="${thumbLink}" alt="">
+
+           
+        </div>
+
+        <!-- Post Content -->
+        <div class="post-content">
+            <a href="#" class="post-cata cata-sm cata-danger">Khóa Hoc</a>
+            <a href="/news/video-post.html?idplaylist=${val.id}" class="post-title">${val.title}</a>
+            <div class="post-meta d-flex">
+               
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+`
+})
+elmNewsvideo_1.html(xhtml);
+}
+)
+
+}
+
+showvideosmallone = () => {
+    console.log("uuu")
+    let xhtml = "";
+    $.getJSON( API_PREFIX + "playlists?offset=1&limit=1&sortBy=id&sort_dir=asc&type=course", function( data ) {
+        $.each( data, function( key, val ) {
+            let strJSONImg = val.thumbnail.replace(/"\"/g,"")
+             let thumbnailJson = JSON.parse(strJSONImg);
+             console.log(thumbnailJson)
+
+              thumbLink = thumbnailJson.maxres.url
+              console.log(thumbLink)
+              console.log(val.id)
+              if (key > 0) return false;
+        xhtml += `<div class="single-post-area mb-80">
+        <!-- Post Thumbnail -->
+        <div class="post-thumbnail">
+            <img src="${thumbLink}" alt="">
+
+            
+        </div>
+
+        <!-- Post Content -->
+        <div class="post-content">
+            <a href="#" class="post-cata cata-sm cata-primary">Khóa Hoc</a>
+            <a href="/news/video-post.html?idplaylist=${val.id}" class="post-title">${val.title}</a>
+            <div class="post-meta d-flex">
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+`
+})
+elmNewsvideo_2.html(xhtml);
+}
+)
+
+}
+
+
