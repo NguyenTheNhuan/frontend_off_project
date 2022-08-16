@@ -732,9 +732,9 @@ $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", fu
 
             // yeu thich va bo thich
 showLoveNews = () =>{
-    console.log("DDDD");
-        let xhtml = '';
+    
         let data= loadLove()
+        let xhtml = (data.length== 0)?'<p class= "ml-4" style="color: #db4437;">Danh sách yêu thích Trống</p>':"";
         $.each( data, function( key, val ) {
 
             
