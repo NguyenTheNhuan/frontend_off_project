@@ -71,7 +71,9 @@
                            
                             <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a> 
                             <div class="post-meta   ">
-                                <p class="text-light mb-0"><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</p>
+                            <!-- <p class="text-light mb-0"><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</p> -->
+                                <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
+
                             </div>
                             <p class="mb-2">${val.description}</p>
                             ${statusHeart}
@@ -229,7 +231,7 @@ $.each( data, function( key, val ) {
             <a href="" class="post-cata">${val.category.name}</a>
             <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a> 
             <div class="post-meta d-flex">
-            <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
+            <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] +  `</a>
 
             
             </div>
@@ -262,7 +264,7 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=0&limit=1&sort_by=id&
 
                                 <!-- Post Content -->
                                 <div class="post-content">
-                                        <a href="#" class="post-cata">${val.category.name}</a>
+                                       
                                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
@@ -295,7 +297,7 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=2&limit=2&sort_by=id&
         let day = val.publish_date.split(" ")[0].split("-")
         let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
-        xhtml += `<div class="col-12 col-lg-6">
+        xhtml += `<div class="col-12 col-lg-6 mb-2">
 <!-- Post Thumbnail -->
 <div class="post-thumbnail">
     <img src="${val.thumb}" alt="">
@@ -306,7 +308,7 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=2&limit=2&sort_by=id&
 <div class="col-12 col-lg-6">
 <!-- Post Content -->
 <div class="post-content mt-0">
-    <a href="#" class="post-cata cata-sm cata-success">${val.category.name}</a>
+<!-- <a href="#" class="post-cata cata-sm cata-success"></a>-->
     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
     <div class="post-meta d-flex align-items-center mb-2">
     <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `
@@ -334,7 +336,7 @@ $.getJSON( API_PREFIX + "categories_news/2/articles?offset=2&limit=2&sort_by=id&
 });
 
 
- // cuối trang  thoi sư
+ // cuối trang  du lich
 
  let elmAreaNewsHome_Last_one = $("#news-home-Travel-Last");
 $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=1&sort_by=id&sort_dir=desc", function( data ) {
@@ -350,7 +352,7 @@ $.getJSON( API_PREFIX + "categories_news/11/articles?offset=0&limit=1&sort_by=id
 
                                 <!-- Post Content -->
                                 <div class="post-content">
-                                    <a href="#" class="post-cata">${val.category.name}</a>
+                                    <!-- <a href="#" class="post-cata">${val.category.name}</a> -->
                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
                                     <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
@@ -384,7 +386,7 @@ $.getJSON( API_PREFIX + "categories_news/11/articles?offset=1&limit=3&sort_by=id
 
         let active = (key===0) ? "show active" : "";
         xhtml += `
-<div class="col-12 col-lg-6">
+<div class="col-12 col-lg-6 mb-2">
             <!-- Post Thumbnail -->
             <div class="post-thumbnail">
                 <img src="${val.thumb}" alt="">
@@ -395,7 +397,7 @@ $.getJSON( API_PREFIX + "categories_news/11/articles?offset=1&limit=3&sort_by=id
         <div class="col-12 col-lg-6">
             <!-- Post Content -->
             <div class="post-content mt-0">
-                <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
+               <!-- <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a> -->
                 <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                 <div class="post-meta d-flex align-items-center mb-2">
                 <a href="#"><i class="" aria-hidden="true"></i> <i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
@@ -439,7 +441,7 @@ $.getJSON( API_PREFIX + "categories_news/9/articles?offset=0&limit=1&sort_by=id&
 
                                 <!-- Post Content -->
                                 <div class="post-content">
-                                    <a href="#" class="post-cata">${val.category.name}</a>
+                                  <!--  <a href="#" class="post-cata">${val.category.name}</a> -->
                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
                                     <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
@@ -473,7 +475,7 @@ $.getJSON( API_PREFIX + "categories_news/9/articles?offset=1&limit=3&sort_by=id&
         let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
-<div class="col-12 col-lg-6">
+<div class="col-12 col-lg-6 mb-2">
             <!-- Post Thumbnail -->
             <div class="post-thumbnail">
                 <img src="${val.thumb}" alt="">
@@ -484,7 +486,7 @@ $.getJSON( API_PREFIX + "categories_news/9/articles?offset=1&limit=3&sort_by=id&
         <div class="col-12 col-lg-6">
             <!-- Post Content -->
             <div class="post-content mt-0">
-                <a href="#" class="post-cata cata-sm cata-primary">${val.category.name}</a>
+               <!-- <a href="#" class="post-cata cata-sm cata-primary">${val.category.name}</a> -->
                 <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                 <div class="post-meta d-flex align-items-center mb-2">
                 <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
@@ -527,7 +529,7 @@ $.getJSON( API_PREFIX + "categories_news/8/articles?offset=1&limit=1&sort_by=id&
 
                                 <!-- Post Content -->
                                 <div class="post-content">
-                                    <a href="#" class="post-cata">${val.category.name}</a>
+                                    <!-- <a href="#" class="post-cata">${val.category.name}</a> -->
                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
                                     <div class="post-meta d-flex">
                                     <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
@@ -561,7 +563,7 @@ $.getJSON( API_PREFIX + "categories_news/8/articles?offset=2&limit=2&sort_by=id&
         let time = val.publish_date.split(" ")[1]
         let active = (key===0) ? "show active" : "";
         xhtml += `
-<div class="col-12 col-lg-6">
+<div class="col-12 col-lg-6 mb-2">
 <!-- Post Thumbnail -->
 <div class="post-thumbnail">
     <img src="${val.thumb}" alt="">
@@ -573,7 +575,7 @@ $.getJSON( API_PREFIX + "categories_news/8/articles?offset=2&limit=2&sort_by=id&
 <div class="col-12 col-lg-6">
 <!-- Post Content -->
 <div class="post-content mt-0">
-    <a href="#" class="post-cata cata-sm cata-danger">${val.category.name}</a>
+     <a href="#" class="mb-2"></a> 
     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a>
     <div class="post-meta d-flex align-items-center mb-2">
     <a href="#"><i class="" aria-hidden="true"></i> <i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
@@ -623,7 +625,7 @@ $.getJSON( API_PREFIX + "articles?offset=1&limit=1&sort_by=id&sort_dir=desc", fu
                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
                         <div class="post-meta d-flex">
                         <p class="text-light mb-0"></p>
-                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
+                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] +  `</a>
 
                         </div>
                     </div>
@@ -658,7 +660,7 @@ $.getJSON( API_PREFIX + "articles?offset=0&limit=1&sort_by=id&sort_dir=desc", fu
                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
                         <div class="post-meta d-flex">
                         <p class="text-light mb-0"></p>
-                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
+                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] +  `</a>
 
                         </div>
                     </div>
@@ -694,7 +696,7 @@ $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", fu
            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">${val.title}</a>
            <div class="post-meta d-flex">
            <p class="text-light mb-0"></p>
-           <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] + " " + time + `</a>
+           <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i> ` + day[2]+"-"+day[1]+"-"+day[0] +  `</a>
            </div>
        </div>
    </div>
