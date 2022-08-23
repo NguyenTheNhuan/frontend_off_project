@@ -68,9 +68,9 @@
                             </div>
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Tìm kiếm...">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                <form action="./timkiem.html" method="get" class="search-model-form" id="form_search">
+                                    <input type="text" name="search" id="search-input" placeholder="Tìm kiếm.....">
+                                    <button type="submit" id="search-submit"><span class="icon_search"></span></button>
                                 </form>
                             </div>
                             
@@ -154,8 +154,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="single-video-area">
-                        <iframe src="https://www.youtube.com/embed/1nI-GMmHMHs" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="single-video-area" id="api-first-video">
+                        
                     </div>
                 </div>
             </div>
@@ -178,22 +178,8 @@
                         <div class="blog-content">
 
                             <!-- Post Content -->
-                            <div class="post-content mt-0">
-                                <a href="#" class="post-cata cata-sm cata-danger">Game</a>
-                                <a href="single-post.html" class="post-title mb-2">Reunification of migrant toddlers, parents should be completed Thursday</a>
-
-                                <div class="d-flex justify-content-between mb-30">
-                                    <div class="post-meta d-flex align-items-center">
-                                        <a href="#" class="post-author">By Jane</a>
-                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                        <a href="#" class="post-date">Sep 08, 2018</a>
-                                    </div>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 7</a>
-                                    </div>
-                                </div>
+                            <div class="post-content mt-0" id="api-title-video">
+                                <!-- <a href="#" class="post-cata cata-sm cata-danger">Game</a> -->
                             </div>
 
                             <p></p>
@@ -233,11 +219,11 @@
                             <div class="related-post-area mt-5">
                                 <!-- Section Title -->
                                 <div class="section-heading style-2">
-                                    <h4>Related Post</h4>
+                                    <h4>Danh sách Video</h4>
                                     <div class="line"></div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row" id="api-List-video">
 
                                     <!-- Single Blog Post -->
                                     <div class="col-12 col-md-6">
@@ -252,49 +238,28 @@
 
                                             <!-- Post Content -->
                                             <div class="post-content">
-                                                <a href="#" class="post-cata cata-sm cata-success">Sports</a>
+                                                <!-- <a href="#" class="post-cata cata-sm cata-success">Sports</a> -->
                                                 <a href="single-post.html" class="post-title">Warner Bros. Developing ‘The accountant’ Sequel</a>
                                                 <div class="post-meta d-flex">
-                                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
+                                                    <!-- <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
                                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
+                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a> -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Single Blog Post -->
-                                    <div class="col-12 col-md-6">
-                                        <div class="single-post-area mb-50">
-                                            <!-- Post Thumbnail -->
-                                            <div class="post-thumbnail">
-                                                <img src="img/bg-img/12.jpg" alt="">
-
-                                                <!-- Video Duration -->
-                                                <span class="video-duration">05.03</span>
-                                            </div>
-
-                                            <!-- Post Content -->
-                                            <div class="post-content">
-                                                <a href="#" class="post-cata cata-sm cata-danger">Game</a>
-                                                <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminste</a>
-                                                <div class="post-meta d-flex">
-                                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
 
                               <!-- Post Author -->
-                              <div class="vizew-post-author d-flex align-items-center py-5">
-                                <div class="post-author-thumb">
+                              <!-- <div class="vizew-post-author d-flex align-items-center py-5"> -->
+                                <!-- <div class="post-author-thumb">
                                     <img src="img/bg-img/30.jpg" alt="">
-                                </div>
-                                <div class="post-author-desc pl-4">
+                                </div> -->
+                                <!-- <div class="post-author-desc pl-4">
                                     <a href="#" class="author-name">Calantha Flower</a>
                                     <p>Hello! My name is Nicolas Sarkozy. I’m a web designer and front-end web developer with over fifteen years of professional.</p>
                                     <div class="post-author-social-info">
@@ -304,8 +269,8 @@
                                         <a href="#"><i class="fa fa-linkedin"></i></a>
                                         <a href="#"><i class="fa fa-dribbble"></i></a>
                                     </div>
-                                </div>
-                            </div>
+                                </div> -->
+                            <!-- </div> -->
 
                             
 
@@ -657,6 +622,13 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
+    <script src="js/defined.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/active.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

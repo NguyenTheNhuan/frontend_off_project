@@ -1,6 +1,6 @@
 // Đổ danh sách bài viết đã xem
 showArticleViewed = (data) => {
-   
+    console.log("téttt")
     // Đổ dữ liệu ra category news
     let elmAreaArticleViewed = $("#zvn-viewed")
     let xhtml = '';
@@ -94,4 +94,9 @@ funcRemoveLove = (id, local) => {
 //    showArticleNew();
 //    showArticleLove();
 //    showItemsCategory();
+}
+
+funcOpenVideo = (idVideo) =>{
+    showVideos(idVideo)
+
 }

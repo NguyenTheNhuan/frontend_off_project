@@ -1996,3 +1996,6 @@ a#nav-profile-tab.active, a#nav-home-tab.active {
   background-color:darkcyan;
 }
 
+#zvn-area-list-news .single-post-area:last-child {
+  border: none
+}

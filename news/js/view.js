@@ -735,8 +735,8 @@ $.getJSON( API_PREFIX + "articles?offset=5&limit=1&sort_by=id&sort_dir=desc", fu
             // yeu thich va bo thich
 showLoveNews = () =>{
     
-        let data= loadLove()
-        let xhtml = (data.length== 0)?'<p class= "ml-4" style="color: #db4437;">Danh sách yêu thích Trống</p>':"";
+        let data= (loadLove() == null) ? [] : loadLove()
+        let xhtml = (data.length== 0 || data== null) ?'<p class= "ml-4" style="color: #db4437;">Danh sách yêu thích Trống</p>':"";
         $.each( data, function( key, val ) {
 
             
@@ -892,7 +892,160 @@ showvideosmallone = () => {
 elmNewsvideo_2.html(xhtml);
 }
 )
-
 }
 
+showSearchNews = () => {
+    let paramSearch = $.urlParam('search')
+    let xhtm ="";
+    let searchValue = [];
+    if ( paramSearch == 0 || paramSearch == null) {
+            xhtm =`<p class="ml-4 text-light font-weight-light font-italic text-center">
+            Vui Lòng Nhập Từ Khóa Tìm Kiếm
+                 </p>`;
+                 elmNewsSearch.html(xhtm);
+        return false;
+    } else {
+        let txt = paramSearch.replaceAll("+"," ")
+        elmKeyWordShow.text(`theo từ khóa: ${txt}`)
+        $("input#search-input").val(txt)
+        let arrSearch = paramSearch.split("+")
+        $.each(arrSearch, function (index, value) {
+                    let string = value.toLowerCase()
+                    
+                    var newArr = $.getJSON( API_PREFIX + `articles/search?q=${string}&offset=0&limit=10&sort_by=id&sort_dir=desc`, function(data) {
+                        console.log( "success" );
+                        searchValue.push(...data)
+                        // }
+                      })
+                        .done(function() {
+                          console.log( "second success" );
+                        })
+                        .fail(function() {
+                          console.log( "error" );
+                        })
+                        .always(function() {
+                          console.log( "complete" );
+                        });
+                       
+                      // Perform other work here ...
+                       console.log(searchValue)
+                      // Set another completion function for the request above
+                      newArr.always(function(data) {
+                        console.log( "second complete" );
+                        
+                        if (searchValue.length == 0 ) {
+                            xhtm =`<p class="ml-4 text-light font-weight-light font-italic text-center">
+                            Không có kết quả phù hợp!
+                                 </p>`;
+                                 elmNewsSearch.html(xhtm);
+                         } else {
+                         $.each(searchValue, function (index, val) {
+                            let title= val.title.toLowerCase()
+                            let description = val.description.toLowerCase()
+                            console.log(title)
+                            console.log(description)
+                            console.log(string)
+
+                            if (title.includes(" "+string+ " ") || description.includes(" "+string+ " ")){
+                                    let day = val.publish_date.split(" ")[0].split("-")
+                                    let title = val.title.replaceAll(/'/g, '').replaceAll(/"/g, '');
+                                    let titleHightlight = highlight(val.title, string)
+                                    let descriptionHightLight = highlight(val.description, string)
+                                xhtm += ` <div class="single-post-area style-2">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-12 col-md-6">
+                                                                <!-- Post Thumbnail -->
+                                                                <div class="post-thumbnail">
+                                                                    <img src="${val.thumb}" alt="">
+                                            
+                                                                    <!-- Video Duration -->
+                                                                    <span class="video-duration">05.03</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-6">
+                                                                <!-- Post Content -->
+                                                                <div class="post-content mt-0">
+                                                                
+                                                                    <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2 text-white">`+ titleHightlight + `</a> 
+                                                                    <div class="post-meta   ">
+                                                                        <a href="#"><i class="" aria-hidden="true"></i><i class="fa-solid fa-clock mr-2"></i>` + day[2]+"-"+day[1]+"-"+day[0] + `</a>
+
+                                                                    </div>
+                                                                    <p class="mb-2">`+ descriptionHightLight+ `</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>`;
+                                elmNewsSearch.html(xhtm);
+                         }})}
+                      });
+
+         })
+
+        
+
+}}
+
+function showVideos(idVideo) {
+    console.log(idVideo)
+   
+
+    let idParam = $.urlParam('idplaylist');
+    let htmlIframe= "";
+    let htmlTitle = "";
+    let xhtml="";
+    if (idParam !== null) {
+    $.getJSON( API_PREFIX + `playlists/${idParam}/videos?offset=0&sort_by=id&sort_dir=asc`, function( data ) {
+        htmlIframe = data[0].iframe
+        htmlTitle = `
+            <h4>${data[0].title}</h4>`
+        $.each(data, async function (index, val) {
+           if ( idVideo === val.id){
+                htmlIframe =  val.iframe
+                htmlTitle =  `
+                    <h4>${val.title}</h4>
+
+                `  
+                $('html, body').animate({
+                    scrollTop: $(".vizew-breadcrumb").offset().top
+                },1000);
+            } 
+
+
+    
+            let strJSONImg = val.thumbnail.replace(/"\"/g,"")
+            let thumbnailJson = JSON.parse(strJSONImg);
+            thumbLink = thumbnailJson.high.url
+            xhtml += `
+            <div class="col-12 col-md-6">
+            <div class="single-post-area mb-50">
+                <!-- Post Thumbnail -->
+                <div class="post-thumbnail">
+                    <img src="${thumbLink}" alt="">
+
+                    <!-- Video Duration -->
+                    <span class="video-duration">05.03</span>
+                </div>
+
+                <!-- Post Content -->
+                <div class="post-content">
+                    <a href="javascript:void(0);" onClick="funcOpenVideo(${val.id});" class="post-title">${val.title}</a>
+                    <div class="post-meta d-flex">
+                        <!-- <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
+                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
+                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+            `
+            elfirstVideo.html(htmlIframe);
+            elmTitleVideo.html(htmlTitle);
+            elmlistVideo.html(xhtml)      
+            
+            
+        })
+    });
+} ;
+}
 
