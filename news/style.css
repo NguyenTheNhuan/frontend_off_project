@@ -1999,3 +1999,11 @@ a#nav-profile-tab.active, a#nav-home-tab.active {
 #zvn-area-list-news .single-post-area:last-child {
   border: none
 }
+
+.bg-warning {
+  background-color: #db4437!important;
+}
+
+.text-light {
+  color: #db4437!important;
+}

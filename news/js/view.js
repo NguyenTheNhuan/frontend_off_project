@@ -894,19 +894,21 @@ elmNewsvideo_2.html(xhtml);
 )
 }
 
+// tim kiem
+
 showSearchNews = () => {
     let paramSearch = $.urlParam('search')
     let xhtm ="";
     let searchValue = [];
     if ( paramSearch == 0 || paramSearch == null) {
             xhtm =`<p class="ml-4 text-light font-weight-light font-italic text-center">
-            Vui Lòng Nhập Từ Khóa Tìm Kiếm
+             Nhập Từ Khóa Tìm Kiếm
                  </p>`;
                  elmNewsSearch.html(xhtm);
         return false;
     } else {
         let txt = paramSearch.replaceAll("+"," ")
-        elmKeyWordShow.text(`theo từ khóa: ${txt}`)
+        elmKeyWordShow.text(` ${txt}`)
         $("input#search-input").val(txt)
         let arrSearch = paramSearch.split("+")
         $.each(arrSearch, function (index, value) {
